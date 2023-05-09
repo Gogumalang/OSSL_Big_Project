@@ -189,7 +189,8 @@ void open_file(node *h){
 
  
         FILE *fp;
-
+        node *tail;
+        tail = NULL;
         fp = fopen("server.txt","r"); // 서버파일을 읽기모드로 연다.
         if(fp ==NULL) {
                 fclose(fp);
@@ -203,10 +204,20 @@ void open_file(node *h){
                         if(new->price  ==0){ // feof가 제대로 실행되지 않는 것 >같아서 조건 하나를 더 주었다.
                                 free(new);
                         }
-                        else{
+                        else{   
+                                if(h->link == NULL){
+                                        h->link = new;
+                                        tail = new;
+                                        tail -> link = NULL;
+                                }
+                                else{
+                                        tail->link = new;
+                                        new->link = NULL;
+                                        tail = new;
+                                }
+                                
                                 new->stats=((new->p1)+(new->p2)+(new->p3)+(new->p4))/4;
-                                new->link = h->link;
-                                h->link = new;
+                                
 
                         }
                 }
