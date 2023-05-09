@@ -5,7 +5,8 @@ typedef struct {
   char PW[100]; // 비밀번호
 } login_info;
 
-void saveData(login_info a) { //로그인 정보 저장
+void save_data(login_info a) { //로그인 정보 저장
+
   FILE *fp;
   fp = fopen("login_info.txt", "a");
 
