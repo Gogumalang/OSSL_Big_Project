@@ -1,7 +1,9 @@
 #include "player.h"
 // 이것은 플레이어 데이터를 담을 수 있는 코드 입니다! 
 
-void setdata(node *h){ // addPlayer를 실행할 때 값을 넣을 보조 함수
+
+void set_data(node *h){ // addPlayer를 실행할 때 값을 넣을 보조 함수
+
         printf("Player name : ");
         scanf("%s",h->name);
         getchar();
@@ -66,7 +68,11 @@ node *init(){
 }
 
 
-node *findname(node *h,char name[]){
+ 
+
+node *find_name(node *h,char name[]){
+
+ 
         node *cur;
         cur =h;
         while(cur != NULL){
@@ -79,22 +85,32 @@ node *findname(node *h,char name[]){
         return h;
 }
 
-void addPlayer(node *h){// add to head
+ 
+
+void add_player(node *h){// add to head
         node *newnode;
         newnode = (node *)malloc(sizeof(node));
-        setdata(newnode);
+        set_data(newnode);
+ 
 
         newnode->link = h->link;
         h->link = newnode;
 
 }
 
-void updatePlayer(node *h){
+ 
+void update_player(node *h){
+
+ 
         char name[20];
         node *cur;
         printf("Wich player will you update? : ");
         scanf("%s",name);
-        cur =findname(h,name);
+ 
+
+        cur =find_name(h,name);
+
+ 
         if(cur == h ) printf("The player doesn't exist. \n");
         else {
           if(cur->position =='s'){
@@ -140,7 +156,11 @@ void updatePlayer(node *h){
 
 }
 
-void deletePlayer(node *h){
+ 
+
+void delete_player(node *h){
+
+ 
         char name[20];
         node *cur, *subcur;
         cur = h->link;
@@ -163,9 +183,14 @@ void deletePlayer(node *h){
         else printf("The deletion has been completed.\n");
 
 }
-void openfile(node *h){
-        FILE *fp;
+ 
 
+void open_file(node *h){
+
+ 
+        FILE *fp;
+        node *tail;
+        tail = NULL;
         fp = fopen("server.txt","r"); // 서버파일을 읽기모드로 연다.
         if(fp ==NULL) {
                 fclose(fp);
@@ -179,10 +204,20 @@ void openfile(node *h){
                         if(new->price  ==0){ // feof가 제대로 실행되지 않는 것 >같아서 조건 하나를 더 주었다.
                                 free(new);
                         }
-                        else{
+                        else{   
+                                if(h->link == NULL){
+                                        h->link = new;
+                                        tail = new;
+                                        tail -> link = NULL;
+                                }
+                                else{
+                                        tail->link = new;
+                                        new->link = NULL;
+                                        tail = new;
+                                }
+                                
                                 new->stats=((new->p1)+(new->p2)+(new->p3)+(new->p4))/4;
-                                new->link = h->link;
-                                h->link = new;
+                                
 
                         }
                 }
@@ -205,18 +240,26 @@ void server_filesave(node *h){
 
 
 }
-void dataPlayer(node *t){
+ 
+
+void data_player(node *t){
         printf("%9s %4d %4u %5u %5hu %8hu %8hu\n",t->name, t->price,t->stats, t->p1, t->p2, t->p3, t->p4);
 }
 
-void readPlayer(node *h){
+void read_player(node *h){
+
+
         node *cur;
         cur = h;
         printf("\n--------------------------Striker--------------------------\n");
         printf("     Name Price Stats Pace Shooting Passing Dribbling\n");
 
         while(cur != NULL){
-                if(cur->position == 's'&&cur->sold == false) dataPlayer(cur);
+ 
+
+                if(cur->position == 's'&&cur->sold == false) data_player(cur);
+
+ 
                 cur = cur->link;
         }
         cur =h;
@@ -225,7 +268,11 @@ void readPlayer(node *h){
         printf("     Name Price Stats Pace Physical Composure Defense\n");
 
         while(cur != NULL){
-                if(cur->position == 'd'&&cur->sold == false) dataPlayer(cur);
+ 
+
+                if(cur->position == 'd'&&cur->sold == false) data_player(cur);
+
+ 
                 cur = cur->link;
         }
         cur =h;
@@ -234,7 +281,10 @@ void readPlayer(node *h){
         printf("     Name Price Stats Diving Handling Kick Reaction\n");
 
         while(cur != NULL){
-                if(cur->position == 'g'&&cur->sold == false) dataPlayer(cur);
+ 
+                if(cur->position == 'g'&&cur->sold == false) data_player(cur);
+
+ 
                 cur = cur->link;
         }
 
@@ -242,14 +292,22 @@ void readPlayer(node *h){
 }
 
 
-void readSquad(node *h){
+ 
+
+void read_squad(node *h){
+
+ 
         node *cur;
         cur = h;
         printf("\n--------------------------Striker--------------------------\n");
         printf("     Name Price Stats Pace Shooting Passing Dribbling\n");
 
         while(cur != NULL){
-                if(cur->position == 's'&&cur->sold == true) dataPlayer(cur);
+ 
+
+                if(cur->position == 's'&&cur->sold == true) data_player(cur);
+
+ 
                 cur = cur->link;
         }
         cur =h;
@@ -258,7 +316,11 @@ void readSquad(node *h){
         printf("     Name Price Stats Pace Physical Composure Defense\n");
 
         while(cur != NULL){
-                if(cur->position == 'd'&&cur->sold == true) dataPlayer(cur);
+ 
+
+                if(cur->position == 'd'&&cur->sold == true) data_player(cur);
+
+ 
                 cur = cur->link;
         }
         cur =h;
@@ -267,7 +329,11 @@ void readSquad(node *h){
         printf("     Name Price Stats Diving Handling Kick Reaction\n");
 
         while(cur != NULL){
-                if(cur->position == 'g'&&cur->sold == true) dataPlayer(cur);
+ 
+
+                if(cur->position == 'g'&&cur->sold == true) data_player(cur);
+
+ 
                 cur = cur->link;
         }
 
@@ -275,13 +341,21 @@ void readSquad(node *h){
 
 }
 
-void buyPlayer(node *h,int *account){
+ 
+
+void buy_player(node *h,int *account){
+
+ 
         char name[20];
         node *cur;
         int buy;
         printf("Which player will you buy? : ");
         scanf("%s",name);
-        cur =findname(h,name);
+ 
+
+        cur =find_name(h,name);
+
+ 
         if(cur == h ) printf("The player doesn't exist. \n");
         else if(cur->sold ==true) printf("The player is sold. \n");
         else {
@@ -301,13 +375,20 @@ void buyPlayer(node *h,int *account){
 }
 
 
-void sellPlayer(node *h,int *account){
+ 
+
+void sell_player(node *h,int *account){
+
+ 
         char name[20];
         node *cur;
         int sell;
         printf("Wich player will you sell? : ");
         scanf("%s",name);
-        cur =findname(h,name);
+ 
+        cur =find_name(h,name);
+
+ 
         if(cur == h ) printf("The player doesn't exist. \n");
         else if(cur->sold ==false) printf("The player isn't in your squad. \n");
         else {
@@ -322,13 +403,20 @@ void sellPlayer(node *h,int *account){
 
 }
 
-void cmpPlayer(node *h){
+ 
+void cmp_player(node *h){
+
+ 
         node *cur,*cur2;
         char name[2][20];
         int serch;
         printf("Player who you're looking for : ");
         scanf("%s",name[0]);
-        cur = findname(h,name[0]);
+ 
+
+        cur = find_name(h,name[0]);
+
+ 
         if(cur == h ) printf("The player doesn't exist. \n");
         else{
                 printf("Compare?(1) No (0) : ");
@@ -338,7 +426,11 @@ void cmpPlayer(node *h){
                         printf("Player who is compared(quit: q) : ");
                         scanf("%s",name[1]);
                         if(strcmp(name[1],"q")==0) break;
-                        cur2=findname(h,name[1]);
+ 
+
+                        cur2=find_name(h,name[1]);
+
+ 
                         if(cur2 == h ) printf("The player doesn't exist. \n");
                         else if(cur->position == cur2->position){
                                 break;
@@ -359,8 +451,12 @@ void cmpPlayer(node *h){
                         printf("\n-------------------------Goalkeeper------------------------\n");
                         printf("     Name Price Stats Diving Handling Kick Reaction\n");
                 }
-                dataPlayer(cur);
-                if((serch==1)&&(strcmp(name[1],"q")!=0)) dataPlayer(cur2);
+ 
+
+                data_player(cur);
+                if((serch==1)&&(strcmp(name[1],"q")!=0)) data_player(cur2);
+
+  
         }
 
 }

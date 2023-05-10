@@ -17,20 +17,21 @@ typedef struct node{
 
 }node;
 
-void setdata(node *h);
+
+void set_data(node *h);
 node *init();
-node *findname(node *h,char name[]);
-void addPlayer(node *h);
-void updatePlayer(node *h);
-void deletePlayer(node *h);
-void openfile(node *h);
+node *find_name(node *h,char name[]);
+void add_player(node *h);
+void update_player(node *h);
+void delete_player(node *h);
+void open_file(node *h);
 void server_filesave(node *h);
-void dataPlayer(node *t);
-void readPlayer(node *h);
-void readSquad(node *h);
-void buyPlayer(node *h,int *account);
-void sellPlayer(node *h,int *account);
-void cmpPlayer(node *h);
+void data_player(node *t);
+void read_player(node *h);
+void read_squad(node *h);
+void buy_player(node *h,int *account);
+void sell_player(node *h,int *account);
+void cmp_player(node *h);
 int login();
 int select_server();
 int select_client();
