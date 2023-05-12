@@ -2,7 +2,7 @@
 #include <string.h>
 
 typedef struct {
-  char ID[100]; // 아디디
+  char ID[100]; // 아이디
   char PW[100]; // 비밀번호
 } login_info;
 
@@ -15,18 +15,19 @@ void saveData(login_info *a) { //로그인 정보 저장
   fclose(fp); //파일 닫기
 }
 
-int login_compare(login_info *a, int count) {
+int login_compare(login_info *a) {
   char log_id[100];
   char log_pw[100];
-
-  for (int i = 0; i < count; i++) {
-    printf("%s %s\n", a[i].ID, a[i].PW);
-  }
+  FILE *fp;
+  fp = fopen("login_info.txt", "r");
 
   printf("[login] Enter your ID : ");
   scanf("%s", log_id);
 
-  for (int i = 0; i < count; i++) {
+  for (int i = 0; i < 20; i++) {
+    fscanf(fp, "%s %s \n", a[i].ID, a[i].PW);
+  }
+  for (int i = 0; i < 20; i++) {
     if (strcmp(a[i].ID, log_id) == 0) {
       printf("[login] Enter your PW : ");
       scanf("%s", log_pw);
@@ -67,6 +68,14 @@ int main(void) {
   int count = 0;
   int menu;
   login_info a[20];
+  for (int i = 0; i < 20; i++) {
+    if (a[i].ID[0] == '\0' || NULL) {
+      a[i].ID[0] = '.';
+      a[i].ID[1] = '\0';
+      a[i].PW[0] = '.';
+      a[i].PW[1] = '\0';
+    }
+  }
 
   while (1) {
     menu = selectMenu();
@@ -76,7 +85,7 @@ int main(void) {
     }
 
     else if (menu == 2) {
-      int try = login_compare(a, count);
+      int try = login_compare(a);
       if (try == 1) {
 
         // 로그인 성공했다고 띄우고 접속시키기
