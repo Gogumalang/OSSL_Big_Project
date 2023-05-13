@@ -38,4 +38,3 @@ int select_client();
 int client_account();
 void save_account(int num);
 void deallocation(node *h);
-

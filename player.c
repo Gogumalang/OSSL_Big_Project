@@ -461,6 +461,7 @@ void cmp_player(node *h){
 
 }
 
+
 int login(){
         int log;
         int s_log;
