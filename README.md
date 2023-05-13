@@ -1,14 +1,15 @@
 # OSSL_Big_Project
 =======
 
-### 1. 협업 프로그램
+### 1. 사용 프로그램
 - Communication : Kakaotalk
 - Woking : Github
+- Crawling : Listly
 
 
 
 ### 2. 사용된 언어
- - C 언어
+ - C
  - HTML
  
 =======
