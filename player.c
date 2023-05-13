@@ -545,6 +545,26 @@ void save_account(int u,int n){
 
 }
 
+int get_account(int n){
+    FILE *p;
+    p=fopen("account.txt","r");
+    int i=0;
+    
+    int account;
+    while(!feof(p)){
+        fscanf(p,"%d",&account_list[i]);
+        if(i+1 == n) account = account_list[i];
+        i++;
+        
+    }
+    account_list[i]= -1;
+    fclose(p);
+
+    return account;
+
+
+}
+
 void deallocation(node *h){
         node *d;
         node* cur;
@@ -555,3 +575,124 @@ void deallocation(node *h){
                 free(d);
         }
 }
+
+void sign_in(){
+    FILE *p;
+    p= fopen("login_info.txt","r");
+    char make_ID[20];
+    char file_ID[20];
+    int make_PW;
+    int verify_PW;
+    int exist=0;
+    int default_account;
+
+    while(1){ //아이디 정하기 
+        printf("생성할 아이디를 입력하세요. : ");
+        scanf("%s",make_ID);
+        while(!feof(p)){
+            fscanf(p,"%s",file_ID);
+            if(strcmp(make_ID,file_ID)==0) {
+                exist =1;
+                break;
+            }
+        }
+        if(exist==0) break;
+        if(exist == 1) printf("이미 아이디를 사용 중입니다. \n");
+        exist =0;
+
+    }
+    fclose(p);
+
+    while(1){
+        printf("비밀번호를 입력하시오.(숫자만 가능): ");
+        scanf("%d",&make_PW);
+
+        printf("비밀번호를 다시 한번 입력하시오. : ");
+        scanf("%d",&verify_PW);
+        if(make_PW==verify_PW) {
+            printf("회원가입이 완료되었습니다. 다시 재시동하여 로그인을 하세요. \n");
+            break;
+        }
+        else printf("비밀번호가 확인되지 않았습니다. 다시 비밀번호를 설정하세요.\n");
+
+    }
+
+    default_account = 100000;
+    p = fopen("login_info.txt","a"); // 회원 정보를 파일에 저장하기
+
+    fprintf(p,"%s %d\n",make_ID,make_PW);
+    fclose(p);
+
+    p = fopen("account.txt","a");
+
+    fprintf(p,"%d\n",default_account); // 잔액 파일에 저장하기 
+    fclose(p);
+}
+
+int sign_in_or_up(){
+    int sign;
+    printf("로그인(1) 회원가입(0) : ");
+    scanf("%d",&sign);
+    return sign;
+}
+
+int sign_up(){
+
+    FILE *p;
+    char ID[20]; // 사용자에게 입력받을 ID 
+    char cur[20]; // 파일에서 찾을 ID 
+    int i=0; // 사용자가 입력한 아이디가 존재하는 지 확인여부
+    int PW; // 사용자에게 입력받은 PW
+    int pw; // 파일에서 찾을 pw
+    int user_num;
+    int count=1; // pw 입력 횟수 제한
+
+    printf("ID : "); 
+    scanf("%s",ID);
+
+    p = fopen("login_info.txt","r");
+
+    while(!feof(p)){
+        fscanf(p,"%d %s %d",&user_num,cur,&pw);
+        if(strcmp(ID,cur) == 0 ) {
+            printf("PW : ");
+            scanf("%d",&PW);
+            if(PW == pw) {
+                printf("login succes!\n");
+                i=1;
+            }
+            else { 
+                i=2;
+                while(count<=3){
+                    printf("Wrong PW (%d/3)\n",count);
+                    printf("PW : ");
+                    scanf("%d",&PW);
+                    if(PW == pw) {
+                        printf("Login succes!\n");
+                        i=1;
+                        break;
+                    }
+                    count++;
+                }
+            }
+            if(i==1) break;
+            }
+        
+    }
+
+    if(i==0) {
+        printf("Non-exist ID\n");
+        user_num =0;
+    }
+    if(i==2) {
+        printf("Fail login\n");
+        user_num =0;
+    }
+
+    fclose(p);
+
+    return user_num;
+
+}
+
+

@@ -37,8 +37,12 @@ void cmp_player(node *h);
 int select_server();
 int select_client();
 int client_account();
-void save_account(int num);
 void deallocation(node *h);
+
 
 int server_login();
 void save_account(int u,int n); // 계좌파일로 업로드 - 구현완료 
+int get_account(int n); // 해당 계좌 읽어들이기 - 구현완료 
+int sign_in_or_up(); // 회원가입 로그인 선택하기 - 구현완료
+void sign_in(); // 유저로서 회원가입 하기 - 구현완료 
+int sign_up(); // 유저로서 로그인 하기 - 구현완료 
