@@ -11,7 +11,7 @@ int main(){
         int mode;
         int server_menu;
         int client_menu;
-        mode = login();
+        mode = server_login();
 
         if(mode == 0){ // 관리자라면
                 while(1){

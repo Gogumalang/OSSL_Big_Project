@@ -462,7 +462,7 @@ void cmp_player(node *h){
 }
 
 
-int login(){
+int server_login(){
         int log;
         int s_log;
         int s_pw=2023; // 서버 관리자로 접근 가능한 패스워드
@@ -530,10 +530,17 @@ int client_account(){
 
 }
 
-void save_account(int num){
+void save_account(int u,int n){
         FILE *fp;
         fp = fopen("account.txt","w");
-        fprintf(fp,"%d",num);
+        int i=0;
+
+        while(account_list[i]!=-1){
+            if(i+1==u) fprintf(fp,"%d",n);
+            else  fprintf(fp,"%d",account_list[i]);
+            i++;
+        }
+        
         fclose(fp);
 
 }

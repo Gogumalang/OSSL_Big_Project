@@ -17,6 +17,8 @@ typedef struct node{
 
 }node;
 
+int account_list[100];
+
 
 void set_data(node *h);
 node *init();
@@ -32,9 +34,11 @@ void read_squad(node *h);
 void buy_player(node *h,int *account);
 void sell_player(node *h,int *account);
 void cmp_player(node *h);
-int login();
 int select_server();
 int select_client();
 int client_account();
 void save_account(int num);
 void deallocation(node *h);
+
+int server_login();
+void save_account(int u,int n); // 계좌파일로 업로드 - 구현완료 
