@@ -1,6 +1,22 @@
 #include "player.h"
 // 이것은 플레이어 데이터를 담을 수 있는 코드 입니다! 
 
+/*
+typedef struct node{
+        char name[30];
+        char main_position[30];
+        unsigned short position; // 0 : striker , 1: defender, 2: goalkeeper
+        int price;
+        unsigned short usernum; // 0 : not sold, a : usernum
+        unsigned short p1;
+        unsigned short p2;
+        unsigned short p3;
+        unsigned short p4;
+        unsigned short stats;
+        struct node *link;
+
+}node;
+*/
 
 void set_data(node *h){ // addPlayer를 실행할 때 값을 넣을 보조 함수
 
@@ -66,9 +82,6 @@ node *init(){
 
         return head;
 }
-
-
- 
 
 node *find_name(node *h,char name[]){
 
@@ -187,56 +200,85 @@ void delete_player(node *h){
 
 void open_file(node *h){
 
- 
         FILE *fp;
         node *tail;
         tail = NULL;
-        fp = fopen("server.txt","r"); // 서버파일을 읽기모드로 연다.
-        if(fp ==NULL) {
-                fclose(fp);
+        char buffer[100];
+        char *token;
+        char *next_token;
+        for(int i=0;i<3;i++){ // 총 3개의 파일을 열어서 읽는다. 
+                if(i==0) fp = fopen("striker.txt","r");
+                else if(i==1) fp = fopen("defender.txt","r");
+                else fp = fopen("defender.txt","r");
+        
+                if(fp ==NULL) {
+                        fclose(fp);
 
-        }
-        else {
-                while(!feof(fp)){
-                        node *new;
-                        new= (node *)malloc(sizeof(node));
-                        fscanf(fp,"%s %c %d %d %hu %hu %hu %hu",new->name,&new->position, &new->price, &new->sold, &new->p1, &new->p2, &new->p3, &new->p4);
-                        if(new->price  ==0){ // feof가 제대로 실행되지 않는 것 >같아서 조건 하나를 더 주었다.
-                                free(new);
-                        }
-                        else{   
-                                if(h->link == NULL){
-                                        h->link = new;
-                                        tail = new;
-                                        tail -> link = NULL;
-                                }
-                                else{
-                                        tail->link = new;
-                                        new->link = NULL;
-                                        tail = new;
-                                }
-                                
-                                new->stats=((new->p1)+(new->p2)+(new->p3)+(new->p4))/4;
-                                
-
-                        }
                 }
-                fclose(fp);
+                else {
+                        while(!feof(fp)){
+                                node *new;
+                                new= (node *)malloc(sizeof(node));
+                                fgets(buffer,sizeof(buffer),fp); // 파일에서 한줄을 받아온다. 
+                                
+                                token = strtok(buffer,","); // ','를 기준으로 단어를 나눈다. 
+                                strcpy(new->name,token);
+                                token = strtok(NULL,",");
+                                strcpy(new->main_position,token);
+                                token = strtok(NULL,",");
+                                new->price = atoi(token);
+                                token = strtok(NULL,",");
+                                new->usernum= atoi(token);
+                                token = strtok(NULL,",");
+                                new->p1= atoi(token);
+                                token = strtok(NULL,",");
+                                new->p2= atoi(token);
+                                token = strtok(NULL,",");
+                                new->p3= atoi(token);
+                                token = strtok(NULL,",");
+                                new->p4= atoi(token);
+                                new->position =i;
 
+                                if(new->price  ==0){ // feof가 제대로 실행되지 않는 것 같아서 조건 하나를 더 주었다.
+                                        free(new);
+                                }
+                                else{   
+                                        if(h->link == NULL){
+                                                h->link = new;
+                                                tail = new;
+                                                tail -> link = NULL;
+                                        }
+                                        else{
+                                                tail->link = new;
+                                                new->link = NULL;
+                                                tail = new;
+                                        }
+                                        
+                                        new->stats=((new->p1)+(new->p2)+(new->p3)+(new->p4))/4;
+                                        
+
+                                }
+                        }
+                        fclose(fp);
+                }
         }
 }
 
 void server_filesave(node *h){
         FILE *fp;
-        fp = fopen("server.txt","w");
-        node *cur;
-        cur = h->link;
-        while(cur!=NULL){
-                fprintf(fp,"%s %c %d %d %hu %hu %hu %hu\n",cur->name,cur->position, cur->price, cur->sold, cur->p1, cur->p2, cur->p3, cur->p4);
-                cur = cur -> link;
-        }
-        fclose(fp);
+        for(int i=0;i<3;i++){
+            if(i==0)      fp = fopen("striker.txt","w");
+            else if(i==1) fp = fopen("defender.txt","w");
+            else          fp = fopen("goalkeeper.txt","w");
 
+            node *cur;
+            cur = h->link;
+            while(cur!=NULL){
+                    fprintf(fp,"%s,%s,%d,%hu,%hu,%hu,%hu,%hu\n",cur->name,cur->main_position,cur->price,cur->usernum,cur->p1, cur->p2, cur->p3, cur->p4);
+                    cur = cur -> link;
+            }
+        fclose(fp);
+        }
 
 
 }
@@ -248,7 +290,7 @@ void data_player(node *t){
 
 void read_player(node *h){
 
-
+        // 무엇을 보고 싶은지 선택한다. 구매 내역이 없는 선수만 보여준다. 
         node *cur;
         cur = h;
         printf("\n--------------------------Striker--------------------------\n");
@@ -291,57 +333,49 @@ void read_player(node *h){
 
 }
 
-
- 
-
-void read_squad(node *h){
-
- 
-        node *cur;
-        cur = h;
-        printf("\n--------------------------Striker--------------------------\n");
-        printf("     Name Price Stats Pace Shooting Passing Dribbling\n");
-
-        while(cur != NULL){
- 
-
-                if(cur->position == 's'&&cur->sold == true) data_player(cur);
-
- 
-                cur = cur->link;
-        }
-        cur =h;
-
-        printf("\n--------------------------Defender-------------------------\n");
-        printf("     Name Price Stats Pace Physical Composure Defense\n");
-
-        while(cur != NULL){
- 
-
-                if(cur->position == 'd'&&cur->sold == true) data_player(cur);
-
- 
-                cur = cur->link;
-        }
-        cur =h;
-
-        printf("\n-------------------------Goalkeeper------------------------\n");
-        printf("     Name Price Stats Diving Handling Kick Reaction\n");
-
-        while(cur != NULL){
- 
-
-                if(cur->position == 'g'&&cur->sold == true) data_player(cur);
-
- 
-                cur = cur->link;
-        }
-
-
+void read_all_player(node *h){
 
 }
 
- 
+int server_login(){
+        int log;
+        int s_log;
+        int s_pw=2023; // 서버 관리자로 접근 가능한 패스워드
+        printf("Access as Server(0) or Client(1): ");
+        scanf("%d",&log);
+        if(log==0){
+                printf("Input password : ");
+                scanf("%d",&s_log);
+                if(s_log == s_pw) {
+                        printf("Access as server \n");
+                        return 0;
+                }
+                else{
+                        printf("Access as client \n");
+                        return 1;
+                }
+                }
+        else{
+                        printf("Access as client \n");
+                        return 1;
+
+                }
+
+}
+
+int select_server(){
+        int menu;
+        printf("\n\n\n---------MENU-----------\n\n");
+        printf(" 1. Add player \n");
+        printf(" 2. Update player \n");
+        printf(" 3. Delete Player \n");
+        printf(" 4. Read Player info\n");
+        printf(" 0. Exit \n");
+        printf("-------------------------\n");
+        printf("Input Number : ");
+        scanf("%d",&menu);
+        return menu;
+}
 
 void buy_player(node *h,int *account){
 
@@ -374,9 +408,6 @@ void buy_player(node *h,int *account){
 
 }
 
-
- 
-
 void sell_player(node *h,int *account){
 
  
@@ -403,6 +434,7 @@ void sell_player(node *h,int *account){
 
 }
 
+ 
  
 void cmp_player(node *h){
 
@@ -462,88 +494,74 @@ void cmp_player(node *h){
 }
 
 
-int server_login(){
-        int log;
-        int s_log;
-        int s_pw=2023; // 서버 관리자로 접근 가능한 패스워드
-        printf("Access as Server(0) or Client(1): ");
-        scanf("%d",&log);
-        if(log==0){
-                printf("Input password : ");
-                scanf("%d",&s_log);
-                if(s_log == s_pw) {
-                        printf("Access as server \n");
-                        return 0;
-                }
-                else{
-                        printf("Access as client \n");
-                        return 1;
-                }
-                }
-        else{
-                        printf("Access as client \n");
-                        return 1;
+void read_squad(node *h){
 
-                }
+ 
+        node *cur;
+        cur = h;
+        printf("\n--------------------------Striker--------------------------\n");
+        printf("     Name Price Stats Pace Shooting Passing Dribbling\n");
 
-}
+        while(cur != NULL){
+ 
 
-int select_server(){
-        int menu;
-        printf("\n\n\n---------MENU-----------\n\n");
-        printf(" 1. Add player \n");
-        printf(" 2. Update player \n");
-        printf(" 3. Delete Player \n");
-        printf(" 4. Read Player info\n");
-        printf(" 0. Exit \n");
-        printf("-------------------------\n");
-        printf("Input Number : ");
-        scanf("%d",&menu);
-        return menu;
-}
+                if(cur->position == 's'&&cur->sold == true) data_player(cur);
 
-
-int select_client(){
-        int menu;
-        printf("\n\n\n---------MENU-----------\n\n");
-        printf(" 1. My squad \n");
-        printf(" 2. Buy Player \n");
-        printf(" 3. Sell Player \n");
-        printf(" 4. Read Player info\n");
-        printf(" 5. Compare players \n");
-        printf(" 0. Exit \n");
-        printf("-------------------------\n");
-        printf("Input Number : ");
-        scanf("%d",&menu);
-        return menu;
-}
-
-
-
-int client_account(){
-        int a;
-        FILE *fp;
-        fp = fopen("account.txt","r");
-        fscanf(fp,"%d",&a);
-        fclose(fp);
-        return a;
-
-}
-
-void save_account(int u,int n){
-        FILE *fp;
-        fp = fopen("account.txt","w");
-        int i=0;
-
-        while(account_list[i]!=-1){
-            if(i+1==u) fprintf(fp,"%d",n);
-            else  fprintf(fp,"%d",account_list[i]);
-            i++;
+ 
+                cur = cur->link;
         }
-        
-        fclose(fp);
+        cur =h;
+
+        printf("\n--------------------------Defender-------------------------\n");
+        printf("     Name Price Stats Pace Physical Composure Defense\n");
+
+        while(cur != NULL){
+ 
+
+                if(cur->position == 'd'&&cur->sold == true) data_player(cur);
+
+ 
+                cur = cur->link;
+        }
+        cur =h;
+
+        printf("\n-------------------------Goalkeeper------------------------\n");
+        printf("     Name Price Stats Diving Handling Kick Reaction\n");
+
+        while(cur != NULL){
+ 
+
+                if(cur->position == 'g'&&cur->sold == true) data_player(cur);
+
+ 
+                cur = cur->link;
+        }
+
+
 
 }
+
+ 
+
+
+
+
+
+
+
+
+
+void deallocation(node *h){
+        node *d;
+        node* cur;
+        cur =h;
+        while(cur->link !=NULL){
+                d=cur;
+                cur = cur->link;
+                free(d);
+        }
+}
+
 
 int get_account(int n){
     FILE *p;
@@ -565,15 +583,34 @@ int get_account(int n){
 
 }
 
-void deallocation(node *h){
-        node *d;
-        node* cur;
-        cur =h;
-        while(cur->link !=NULL){
-                d=cur;
-                cur = cur->link;
-                free(d);
+void save_account(int u,int n){
+        FILE *fp;
+        fp = fopen("account.txt","w");
+        int i=0;
+
+        while(account_list[i]!=-1){
+            if(i+1==u) fprintf(fp,"%d",n);
+            else  fprintf(fp,"%d",account_list[i]);
+            i++;
         }
+        
+        fclose(fp);
+
+}
+
+int select_client(){
+        int menu;
+        printf("\n\n\n---------MENU-----------\n\n");
+        printf(" 1. My squad \n");
+        printf(" 2. Buy Player \n");
+        printf(" 3. Sell Player \n");
+        printf(" 4. Read Player info\n");
+        printf(" 5. Compare players \n");
+        printf(" 0. Exit \n");
+        printf("-------------------------\n");
+        printf("Input Number : ");
+        scanf("%d",&menu);
+        return menu;
 }
 
 void sign_in(){
@@ -694,5 +731,9 @@ int sign_up(){
     return user_num;
 
 }
+
+
+
+
 
 
