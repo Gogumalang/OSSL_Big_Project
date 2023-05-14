@@ -543,14 +543,6 @@ void read_squad(node *h){
 
  
 
-
-
-
-
-
-
-
-
 void deallocation(node *h){
         node *d;
         node* cur;
@@ -563,11 +555,27 @@ void deallocation(node *h){
 }
 
 
+int select_client(){
+        int menu;
+        printf("\n\n\n---------MENU-----------\n\n");
+        printf(" 1. My squad \n");
+        printf(" 2. Buy Player \n");
+        printf(" 3. Sell Player \n");
+        printf(" 4. Read Player info\n");
+        printf(" 5. Compare players \n");
+        printf(" 0. Exit \n");
+        printf("-------------------------\n");
+        printf("Input Number : ");
+        scanf("%d",&menu);
+        return menu;
+}
+
+
+
 int get_account(int n){
     FILE *p;
     p=fopen("account.txt","r");
     int i=0;
-    
     int account;
     while(!feof(p)){
         fscanf(p,"%d",&account_list[i]);
@@ -591,6 +599,7 @@ void save_account(int u,int n){
         while(account_list[i]!=-1){
             if(i+1==u) fprintf(fp,"%d",n);
             else  fprintf(fp,"%d",account_list[i]);
+            if(account_list[i+1]!=-1) fprintf(fp,"\n");
             i++;
         }
         
@@ -598,20 +607,6 @@ void save_account(int u,int n){
 
 }
 
-int select_client(){
-        int menu;
-        printf("\n\n\n---------MENU-----------\n\n");
-        printf(" 1. My squad \n");
-        printf(" 2. Buy Player \n");
-        printf(" 3. Sell Player \n");
-        printf(" 4. Read Player info\n");
-        printf(" 5. Compare players \n");
-        printf(" 0. Exit \n");
-        printf("-------------------------\n");
-        printf("Input Number : ");
-        scanf("%d",&menu);
-        return menu;
-}
 
 void sign_in(){
     FILE *p;
@@ -622,16 +617,14 @@ void sign_in(){
     int verify_PW;
     int exist=0;
     int default_account;
-
+    int last_user_num;
+    int pw;
     while(1){ //아이디 정하기 
         printf("생성할 아이디를 입력하세요. : ");
         scanf("%s",make_ID);
         while(!feof(p)){
-            fscanf(p,"%s",file_ID);
-            if(strcmp(make_ID,file_ID)==0) {
-                exist =1;
-                break;
-            }
+            fscanf(p,"%d %s %d",&last_user_num,file_ID,&pw);
+            if(strcmp(make_ID,file_ID)==0) exist =1;
         }
         if(exist==0) break;
         if(exist == 1) printf("이미 아이디를 사용 중입니다. \n");
@@ -657,7 +650,7 @@ void sign_in(){
     default_account = 100000;
     p = fopen("login_info.txt","a"); // 회원 정보를 파일에 저장하기
 
-    fprintf(p,"%s %d\n",make_ID,make_PW);
+    fprintf(p,"%d %s %d\n",last_user_num+1,make_ID,make_PW);
     fclose(p);
 
     p = fopen("account.txt","a");
@@ -731,9 +724,6 @@ int sign_up(){
     return user_num;
 
 }
-
-
-
 
 
 
