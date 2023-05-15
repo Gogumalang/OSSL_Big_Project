@@ -89,7 +89,7 @@ node *find_name(node *h,char name[]){
         node *cur;
         cur =h;
         while(cur != NULL){
-                if(strcmp(cur->name,name)==0){
+                if(strstr(cur->name,name)!=NULL){
                         return cur;
                 }
                 cur = cur->link;
@@ -205,11 +205,11 @@ void open_file(node *h){
         tail = NULL;
         char buffer[100];
         char *token;
-        char *next_token;
+        printf("openfile\n");
         for(int i=0;i<3;i++){ // 총 3개의 파일을 열어서 읽는다. 
                 if(i==0) fp = fopen("striker.txt","r");
                 else if(i==1) fp = fopen("defender.txt","r");
-                else fp = fopen("defender.txt","r");
+                else fp = fopen("goalkeeper.txt","r");
         
                 if(fp ==NULL) {
                         fclose(fp);
@@ -220,7 +220,6 @@ void open_file(node *h){
                                 node *new;
                                 new= (node *)malloc(sizeof(node));
                                 fgets(buffer,sizeof(buffer),fp); // 파일에서 한줄을 받아온다. 
-                                
                                 token = strtok(buffer,","); // ','를 기준으로 단어를 나눈다. 
                                 strcpy(new->name,token);
                                 token = strtok(NULL,",");
@@ -239,7 +238,7 @@ void open_file(node *h){
                                 new->p4= atoi(token);
                                 new->position =i;
 
-                                if(new->price  ==0){ // feof가 제대로 실행되지 않는 것 같아서 조건 하나를 더 주었다.
+                                if(new->price ==0){ // feof가 제대로 실행되지 않는 것 같아서 조건 하나를 더 주었다.
                                         free(new);
                                 }
                                 else{   
@@ -274,13 +273,17 @@ void server_filesave(node *h){
             node *cur;
             cur = h->link;
             while(cur!=NULL){
-                    fprintf(fp,"%s,%s,%d,%hu,%hu,%hu,%hu,%hu\n",cur->name,cur->main_position,cur->price,cur->usernum,cur->p1, cur->p2, cur->p3, cur->p4);
-                    cur = cur -> link;
+                if((cur->link == NULL)&&(cur->position==i)) fprintf(fp,"%s,%s,%d,%hu,%hu,%hu,%hu,%hu",cur->name,cur->main_position,cur->price,cur->usernum,cur->p1, cur->p2, cur->p3, cur->p4);
+                else {
+                        if(cur->position==i){
+                                if((cur->link)->position != cur->position) fprintf(fp,"%s,%s,%d,%hu,%hu,%hu,%hu,%hu",cur->name,cur->main_position,cur->price,cur->usernum,cur->p1, cur->p2, cur->p3, cur->p4);
+                                else fprintf(fp,"%s,%s,%d,%hu,%hu,%hu,%hu,%hu\n",cur->name,cur->main_position,cur->price,cur->usernum,cur->p1, cur->p2, cur->p3, cur->p4);
+                        }
+                }
+                cur = cur -> link;
             }
         fclose(fp);
         }
-
-
 }
  
 

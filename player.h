@@ -22,13 +22,13 @@ int account_list[100];
 
 
 void set_data(node *h);
-node *init();
-node *find_name(node *h,char name[]);
+node *init(); // 재활용 가능 
+node *find_name(node *h,char name[]); // 재활용 가능 
 void add_player(node *h);
 void update_player(node *h);
 void delete_player(node *h);
-void open_file(node *h);
-void server_filesave(node *h);
+void open_file(node *h); // 업데이트 - 커밋 // 수정
+void server_filesave(node *h); // 업데이트 -커밋 // 수정
 void data_player(node *t);
 void read_player(node *h);
 void read_squad(node *h);
