@@ -1,18 +1,18 @@
 # OSSL_Big_Project
-=======
+
 
 ### 1. 사용 프로그램
 - Communication : Kakaotalk
 - Woking : Github
 - Crawling : Listly
 
-
+===========================
 
 ### 2. 사용된 언어
  - C
  - HTML
  
-=======
+===========================
 
 
 ### 3. 규칙
@@ -27,8 +27,7 @@
 - 'make 함수/파일'    --> ex : 'make account.txt'
 
 
-
-
+===========================
 
 ## 역할
 
