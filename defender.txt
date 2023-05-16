@@ -1,0 +1,51 @@
+Josko Gvardiol	Centre-Back	75					
+Matthijs de Ligt	Centre-Back	75					
+Rúben Dias	Centre-Back	75					
+Ronald Araújo	Centre-Back	70					
+Reece James	Right-Back	70					
+Alphonso Davies	Left-Back	70					
+Éder Militão	Centre-Back	70					
+Achraf Hakimi	Right-Back	70					
+Marquinhos	Centre-Back	70					
+Nuno Mendes	Left-Back	65					
+Wesley Fofana	Centre-Back	65					
+Trent Alexander-Arnold	Right-Back	65					
+Jules Koundé	Centre-Back	60					
+Cristian Romero	Centre-Back	60					
+Dayot Upamecano	Centre-Back	60					
+Theo Hernández	Left-Back	60					
+Milan Skriniar	Centre-Back	60					
+João Cancelo	Right-Back	60					
+William Saliba	Centre-Back	55					
+Alessandro Bastoni	Centre-Back	55					
+Min-jae Kim	Centre-Back	50					
+Lisandro Martínez	Centre-Back	50					
+Gabriel Magalhães	Centre-Back	50					
+Ben White	Right-Back	50					
+Lucas Hernández	Centre-Back	50					
+David Alaba	Centre-Back	50					
+Andrew Robertson	Left-Back	48					
+Pau Torres	Centre-Back	45					
+Sven Botman	Centre-Back	45					
+Fikayo Tomori	Centre-Back	45					
+Virgil van Dijk	Centre-Back	45					
+Jurrien Timber	Centre-Back	42					
+Bremer	Centre-Back	40					
+Benoît Badiashile	Centre-Back	40					
+Nico Schlotterbeck	Centre-Back	40					
+Marc Cucurella	Left-Back	40					
+Oleksandr Zinchenko	Left-Back	40					
+Raphaël Varane	Centre-Back	40					
+Antonio Rüdiger	Centre-Back	40					
+Pierre Kalulu	Centre-Back	35					
+Pedro Porro	Right-Back	35					
+Jeremie Frimpong	Right-Back	35					
+Marc Guéhi	Centre-Back	35					
+Diogo Dalot	Right-Back	35					
+Ibrahima Konaté	Centre-Back	35					
+Benjamin Pavard	Right-Back	35					
+Robin Le Normand	Centre-Back	35					
+Ben Chilwell	Left-Back	35					
+Ferland Mendy	Left-Back	35					
+Presnel Kimpembe	Centre-Back	35					
+
