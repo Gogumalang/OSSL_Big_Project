@@ -1,0 +1,51 @@
+Kylian Mbappé	Centre-Forward	180
+Erling Haaland	Centre-Forward	170
+Vinicius Junior	Left Winger	120
+Bukayo Saka	Right Winger	110
+Phil Foden	Left Winger	110
+Victor Osimhen	Centre-Forward	100
+Harry Kane	Centre-Forward	90
+Khvicha Kvaratskhelia	Left Winger	85
+Rodrygo	Right Winger	80
+Lautaro Martínez	Centre-Forward	80
+Rafael Leão	Left Winger	80
+Christopher Nkunku	Second Striker	80
+Marcus Rashford	Left Winger	80
+Luis Díaz	Left Winger	75
+Gabriel Jesus	Centre-Forward	75
+Dusan Vlahovic	Centre-Forward	75
+Gabriel Martinelli	Left Winger	70
+Antony	Right Winger	70
+Darwin Núñez	Centre-Forward	70
+Jack Grealish	Left Winger	70
+Leroy Sané	Right Winger	70
+Mohamed Salah	Right Winger	70
+Neymar	Left Winger	70
+Randal Kolo Muani	Centre-Forward	65
+Kingsley Coman	Left Winger	65
+Mykhaylo Mudryk	Left Winger	60
+Jonathan David	Centre-Forward	60
+Cody Gakpo	Left Winger	60
+Ousmane Dembélé	Right Winger	60
+Raheem Sterling	Left Winger	60
+Heung-min Son	Left Winger	60
+Dejan Kulusevski	Right Winger	55
+Jadon Sancho	Left Winger	55
+Richarlison	Centre-Forward	55
+Diogo Jota	Left Winger	55
+Serge Gnabry	Right Winger	55
+Julián Álvarez	Centre-Forward	50
+João Félix	Second Striker	50
+Raphinha	Right Winger	50
+Moussa Diaby	Right Winger	50
+Mikel Oyarzabal	Left Winger	50
+Alexander Isak	Centre-Forward	50
+Federico Chiesa	Left Winger	50
+Ivan Toney	Centre-Forward	50
+Tammy Abraham	Centre-Forward	45
+Sadio Mané	Left Winger	45
+Lionel Messi	Right Winger	45
+Gonçalo Ramos	Centre-Forward	40
+Anthony Gordon	Left Winger	40
+Romelu Lukaku	Centre-Forward	40
+
