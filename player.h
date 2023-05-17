@@ -24,22 +24,21 @@ int account_list[100];
 void set_data(node *h);
 node *init(); // 재활용 가능 
 node *find_name(node *h,char name[]); // 재활용 가능 
-void add_player(node *h);
+//void add_player(node *h);
 void update_player(node *h);
 void delete_player(node *h);
 void open_file(node *h); // 업데이트 - 커밋 // 수정
 void server_filesave(node *h); // 업데이트 -커밋 // 수정
-void data_player(node *t);
+//void data_player(node *t);
 void read_player(node *h);
 void read_squad(node *h);
 void buy_player(node *h,int *account);
 void sell_player(node *h,int *account);
 void cmp_player(node *h);
-int server_login();
-int select_server();
-int select_client();
-int client_account();
-void deallocation(node *h);
+int server_login(); // 업데이트 // 완성
+int select_server(); // 재활용 가능 //완성
+int select_client(); // 재활용 가능 // 완성 
+void deallocation(node *h); // 재활용 가능 //완성
 
 void read_all_player(node *h);
 
@@ -49,4 +48,4 @@ int sign_in_or_up(); // 회원가입 로그인 선택하기 - 구현완료 // �
 void sign_in(); // 유저로서 회원가입 하기 - 구현완료  // 수정 
 int sign_up(); // 유저로서 로그인 하기 - 구현완료  // 수정 
 int get_account(int n); // 해당 계좌 읽어들이기 - 구현완료  // 수정 
-void save_account(int u,int n); // 계좌파일로 업로드 - 구현완료 // 수정 
+void save_account(int u,int n); // 계좌파일로 업로드 - 구현완료 // 수정

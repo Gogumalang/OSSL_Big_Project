@@ -14,10 +14,10 @@ int main(){
     while(1){
                         server_menu = select_server();
 
-                        if(server_menu == 1) add_player(h);
+                        if(server_menu == 1) continue; //add_player(h);
                         else if(server_menu == 2) update_player(h);
                         else if(server_menu == 3) delete_player(h);
-                        else if(server_menu == 4) read_all_player(h);
+                        else if(server_menu == 4) read_all_players(h);
 
                         else if(server_menu == 0) {
                                 server_filesave(h);

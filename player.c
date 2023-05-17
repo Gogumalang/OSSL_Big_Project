@@ -340,45 +340,7 @@ void read_all_player(node *h){
 
 }
 
-int server_login(){
-        int log;
-        int s_log;
-        int s_pw=2023; // 서버 관리자로 접근 가능한 패스워드
-        printf("Access as Server(0) or Client(1): ");
-        scanf("%d",&log);
-        if(log==0){
-                printf("Input password : ");
-                scanf("%d",&s_log);
-                if(s_log == s_pw) {
-                        printf("Access as server \n");
-                        return 0;
-                }
-                else{
-                        printf("Access as client \n");
-                        return 1;
-                }
-                }
-        else{
-                        printf("Access as client \n");
-                        return 1;
 
-                }
-
-}
-
-int select_server(){
-        int menu;
-        printf("\n\n\n---------MENU-----------\n\n");
-        printf(" 1. Add player \n");
-        printf(" 2. Update player \n");
-        printf(" 3. Delete Player \n");
-        printf(" 4. Read Player info\n");
-        printf(" 0. Exit \n");
-        printf("-------------------------\n");
-        printf("Input Number : ");
-        scanf("%d",&menu);
-        return menu;
-}
 
 void buy_player(node *h,int *account){
 
@@ -544,7 +506,42 @@ void read_squad(node *h){
 
 }
 
- 
+int server_login(){
+        int log;
+        int s_log;
+        int s_pw=2023; // 서버 관리자로 접근 가능한 패스워드
+       
+        
+        printf("Input password : ");
+        scanf("%d",&s_log);
+        if(s_log == s_pw) {
+                printf("Access as server \n");
+                return 1;
+        }
+        else{
+                printf("You can't have access as server \n");
+                return 0;
+        }
+                
+
+}
+
+int select_server(){
+        int menu;
+        printf("\n\n\n---------MENU-----------\n\n");
+        printf(" 1. Add player \n");
+        printf(" 2. Update player \n");
+        printf(" 3. Delete Player \n");
+        printf(" 4. Read Player info\n");
+        printf(" 0. Exit \n");
+        printf("-------------------------\n");
+        printf("Input Number : ");
+        scanf("%d",&menu);
+        return menu;
+}
+
+
+
 
 void deallocation(node *h){
         node *d;
@@ -556,7 +553,6 @@ void deallocation(node *h){
                 free(d);
         }
 }
-
 
 int select_client(){
         int menu;

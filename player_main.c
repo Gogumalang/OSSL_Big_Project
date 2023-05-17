@@ -24,11 +24,12 @@ int main(){
     while(1){
                         client_menu = select_client();
 
-                        if(client_menu == 1) read_squad(h);
-                        else if(client_menu == 2) buy_player(h,&account);
-                        else if(client_menu == 3) sell_player(h,&account);
+                        if(client_menu == 1) read_squad(h,user);
+                        else if(client_menu == 2) buy_player(h,&account,user);
+                        else if(client_menu == 3) sell_player(h,&account,user);
                         else if(client_menu == 4) read_player(h);
                         else if(client_menu == 5) cmp_player(h);
+       
                         else if(client_menu == 0){
                                 server_filesave(h);
                                 save_account(user,account);
