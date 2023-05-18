@@ -291,54 +291,93 @@ void data_player(node *t){
         printf("%9s %4d %4u %5u %5hu %8hu %8hu\n",t->name, t->price,t->stats, t->p1, t->p2, t->p3, t->p4);
 }
 
+void read_all_players(node *h){
+
+        node *cur;
+        cur = h->link;
+        for (int i=0;i<3;i++){
+            if(i == 0)      printf("\n----------------------Striker---------------------\n");
+            else if(i == 1) printf("\n----------------------Defender--------------------\n");
+
+            else printf("\n---------------------Goalkeeper-------------------\n");
+       
+            printf("Name                    Main position     Price    \n");
+             while(cur != NULL){
+ 
+
+                if(cur->position == i ){
+                    printf("%-23s %-17s $%dm\n",cur->name, cur->main_position,cur->price);
+                        //      Khvicha Kvaratskhelia   Centre-Forward    $180.00m
+                } 
+
+    
+                cur = cur->link;
+            }
+            cur =h->link;
+        }
+}
+
 void read_player(node *h){
 
         // 무엇을 보고 싶은지 선택한다. 구매 내역이 없는 선수만 보여준다. 
         node *cur;
+        cur = h->link;
+        int position;
+        printf("어느 포지션을 보고 싶은가? (0:st 1:df 2:gk) : ");
+        scanf("%d",&position);
+
+        if(position == 0)      printf("\n----------------------Striker---------------------\n");
+        else if(position == 1) printf("\n----------------------Defender--------------------\n");
+
+        else if(position == 2) printf("\n---------------------Goalkeeper-------------------\n");
+        else {
+            printf("다른 번호를 입력하였습니다. \n");
+            return;
+        }
+            
+
+        printf("Name                    Main position     Price    \n");
+        while(cur != NULL){
+ 
+
+            if((cur->position == position) &&(cur->usernum == 0)){
+                printf("%-23s %-17s $%dm\n",cur->name, cur->main_position,cur->price);
+                    //      Khvicha Kvaratskhelia   Centre-Forward    $180.00m
+            } 
+
+ 
+            cur = cur->link;
+        }
+}
+
+void read_squad(node *h,int n){
+
+        node *cur;
         cur = h;
-        printf("\n--------------------------Striker--------------------------\n");
-        printf("     Name Price Stats Pace Shooting Passing Dribbling\n");
+        for (int i=0;i<3;i++){
+            if(i == 0)      printf("\n----------------------Striker---------------------\n");
+            else if(i == 1) printf("\n----------------------Defender--------------------\n");
 
-        while(cur != NULL){
+            else printf("\n---------------------Goalkeeper-------------------\n");
+       
+            printf("Name                    Main position     Price    \n");
+             while(cur != NULL){
  
 
-                if(cur->position == 's'&&cur->sold == false) data_player(cur);
+                if((cur->position == i) &&(cur->usernum == n)){
+                    printf("%-23s %-17s $%dm",cur->name, cur->main_position,cur->price);
+                } 
 
- 
+    
                 cur = cur->link;
-        }
-        cur =h;
-
-        printf("\n--------------------------Defender-------------------------\n");
-        printf("     Name Price Stats Pace Physical Composure Defense\n");
-
-        while(cur != NULL){
- 
-
-                if(cur->position == 'd'&&cur->sold == false) data_player(cur);
-
- 
-                cur = cur->link;
-        }
-        cur =h;
-
-        printf("\n-------------------------Goalkeeper------------------------\n");
-        printf("     Name Price Stats Diving Handling Kick Reaction\n");
-
-        while(cur != NULL){
- 
-                if(cur->position == 'g'&&cur->sold == false) data_player(cur);
-
- 
-                cur = cur->link;
+            }
+            cur =h;
         }
 
 
 }
 
-void read_all_player(node *h){
-
-}
+ 
 
 
 
@@ -459,52 +498,6 @@ void cmp_player(node *h){
 }
 
 
-void read_squad(node *h){
-
- 
-        node *cur;
-        cur = h;
-        printf("\n--------------------------Striker--------------------------\n");
-        printf("     Name Price Stats Pace Shooting Passing Dribbling\n");
-
-        while(cur != NULL){
- 
-
-                if(cur->position == 's'&&cur->sold == true) data_player(cur);
-
- 
-                cur = cur->link;
-        }
-        cur =h;
-
-        printf("\n--------------------------Defender-------------------------\n");
-        printf("     Name Price Stats Pace Physical Composure Defense\n");
-
-        while(cur != NULL){
- 
-
-                if(cur->position == 'd'&&cur->sold == true) data_player(cur);
-
- 
-                cur = cur->link;
-        }
-        cur =h;
-
-        printf("\n-------------------------Goalkeeper------------------------\n");
-        printf("     Name Price Stats Diving Handling Kick Reaction\n");
-
-        while(cur != NULL){
- 
-
-                if(cur->position == 'g'&&cur->sold == true) data_player(cur);
-
- 
-                cur = cur->link;
-        }
-
-
-
-}
 
 int server_login(){
         int log;

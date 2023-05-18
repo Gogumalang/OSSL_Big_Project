@@ -30,8 +30,8 @@ void delete_player(node *h);
 void open_file(node *h); // 업데이트 - 커밋 // 수정
 void server_filesave(node *h); // 업데이트 -커밋 // 수정
 //void data_player(node *t);
-void read_player(node *h);
-void read_squad(node *h);
+void read_player(node *h); // 업데이트 // 완성
+void read_squad(node *h,int n); // 업데이트 // 완성
 void buy_player(node *h,int *account);
 void sell_player(node *h,int *account);
 void cmp_player(node *h);
@@ -40,7 +40,7 @@ int select_server(); // 재활용 가능 //완성
 int select_client(); // 재활용 가능 // 완성 
 void deallocation(node *h); // 재활용 가능 //완성
 
-void read_all_player(node *h);
+void read_all_players(node *h); // 새로 구현함 // 완성 
 
 
 //커밋
