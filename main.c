@@ -27,7 +27,7 @@ int main(){
                                 break;
                         }
                         else {
-                                printf("choose in 0 to 4\n");
+                                printf("[System] Choose in 0 to 4\n");
                         }
 
                 }
@@ -47,7 +47,7 @@ int main(){
                                 break;
                         }
                         else{
-                                printf("choose in 0 to 5\n");
+                                printf("[System] Choose in 0 to 5\n");
 
                         }
                 }
