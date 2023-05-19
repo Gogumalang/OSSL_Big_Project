@@ -36,7 +36,7 @@ int main(){
                                 break;
                         }
                         else{
-                                printf("choose in 0 to 5\n");
+                                printf("[System]  choose in 0 to 5\n");//출력 형태 수정 완료
 
                         }
                 }
