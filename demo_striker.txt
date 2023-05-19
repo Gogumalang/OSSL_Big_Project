@@ -36,11 +36,7 @@ Diogo Jota	Left Winger	55
 Serge Gnabry	Right Winger	55
 Julián Álvarez	Centre-Forward	50
 João Félix	Second Striker	50
-Raphinha	Right Winger	50
-Moussa Diaby	Right Winger	50
-Mikel Oyarzabal	Left Winger	50
-Alexander Isak	Centre-Forward	50
-Federico Chiesa	Left Winger	50
+Raphinha	Right Winger	50./
 Ivan Toney	Centre-Forward	50
 Tammy Abraham	Centre-Forward	45
 Sadio Mané	Left Winger	45
@@ -48,4 +44,3 @@ Lionel Messi	Right Winger	45
 Gonçalo Ramos	Centre-Forward	40
 Anthony Gordon	Left Winger	40
 Romelu Lukaku	Centre-Forward	40
-

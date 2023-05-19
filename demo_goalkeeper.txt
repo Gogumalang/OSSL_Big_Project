@@ -1,27 +1,25 @@
 Thibaut Courtois	Goalkeeper	60			
-Gianluigi Donnarumma	Goalkeeper	50					Diogo Costa	Goalkeeper	45		
-Ederson	Goalkeeper	45							Alisson	Goalkeeper	45	
-Jan Oblak	Goalkeeper	40						Marc-André ter Stegen	Goalkeeper	40		
-Aaron Ramsdale	Goalkeeper	38						Gregor Kobel	Goalkeeper	35		
-Mike Maignan	Goalkeeper	35						Robert Sánchez	Goalkeeper	32		
-Emiliano Martínez	Goalkeeper	28					Giorgi Mamardashvili	Goalkeeper	25		
-David Raya	Goalkeeper	25						Unai Simón	Goalkeeper	25		
-Álex Remiro	Goalkeeper	25						Jordan Pickford	Goalkeeper	25		
-Illan Meslier	Goalkeeper	22						Dean Henderson	Goalkeeper	22		
-Alban Lafont	Goalkeeper	20						André Onana	Goalkeeper	20		
-Gavin Bazunu	Goalkeeper	18						Anatoliy Trubin	Goalkeeper	18		
-Edouard Mendy	Goalkeeper	18						José Sá	Goalkeeper	18	
-Alex Meret	Goalkeeper	18						Nick Pope	Goalkeeper	18		
-Guglielmo Vicario	Goalkeeper	16					Odysseas Vlachodimos	Goalkeeper	16		
-Matvey Safonov	Goalkeeper	15						Rui Silva	Goalkeeper	15		
-Kepa Arrizabalaga	Goalkeeper	15					David de Gea	Goalkeeper	15		
-Pau López	Goalkeeper	14						Juan Musso	Goalkeeper	14		
-Dominik Livakovic	Goalkeeper	14					Marco Carnesecchi	Goalkeeper	13			
-Altay Bayindir	Goalkeeper	13						Justin Bijlow	Goalkeeper	13		
-Ugurcan Cakir	Goalkeeper	13						Walter Benítez	Goalkeeper	12		
-Bono	Goalkeeper	12							Ivan Provedel	Goalkeeper	12		
-Lucas Chevalier	Goalkeeper	10						Conan Ledesma	Goalkeeper	10		
-Gerónimo Rulli	Goalkeeper	10						David Soria	Goalkeeper	10		
-Georgiy Bushchan	Goalkeeper	10					Alexander Nübel	Goalkeeper	10								
-										
-
+Gianluigi Donnarumma	Goalkeeper	50	
+Ederson	Goalkeeper	45
+Jan Oblak	Goalkeeper	40	
+Aaron Ramsdale	Goalkeeper	38	
+Mike Maignan	Goalkeeper	35
+Emiliano Martínez	Goalkeeper	28	
+David Raya	Goalkeeper	25
+Álex Remiro	Goalkeeper	25	
+Illan Meslier	Goalkeeper	22	
+Alban Lafont	Goalkeeper	20		
+Gavin Bazunu	Goalkeeper	18	
+Edouard Mendy	Goalkeeper	18
+Alex Meret	Goalkeeper	18
+Guglielmo Vicario	Goalkeeper	16	
+Matvey Safonov	Goalkeeper	15	
+Kepa Arrizabalaga	Goalkeeper	15
+Pau López	Goalkeeper	14	
+Dominik Livakovic	Goalkeeper	14							
+Altay Bayindir	Goalkeeper	13							
+Ugurcan Cakir	Goalkeeper	13							
+Bono	Goalkeeper	12								
+Lucas Chevalier	Goalkeeper	10							
+Gerónimo Rulli	Goalkeeper	10	
+Georgiy Bushchan	Goalkeeper	10
