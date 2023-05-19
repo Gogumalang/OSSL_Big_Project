@@ -20,51 +20,51 @@ typedef struct node{
 
 void set_data(node *h){ // addPlayer를 실행할 때 값을 넣을 보조 함수
 
-        printf("Player name : ");
+        printf("[System] Player name : ");
         scanf("%s",h->name);
         getchar();
         while(1){
 
-        printf("Position(s/d/g) : ");
+        printf("[System] Position(s/d/g) : ");
         scanf("%c",&h->position);
         if(h->position == 's' ||h->position == 'g' ||h->position == 'd' ) break;
 
         }
 
-        printf("Price : ");
+        printf("[System] Price : ");
         scanf("%d",&h->price);
 
         if(h->position =='s'){
-                printf("Pace : ");
+                printf("[System] Pace : ");
                 scanf("%hu",&h->p1);
-                printf("Shooting : ");
+                printf("[System] Shooting : ");
                 scanf("%hu",&h->p2);
-                printf("Passing : ");
+                printf("[System] Passing : ");
                 scanf("%hu",&h->p3);
-                printf("Dribbling : ");
+                printf("[System] Dribbling : ");
                 scanf("%hu",&h->p4);
                 h->stats=((h->p1)+(h->p2)+(h->p3)+(h->p4))/4;
         }
 	else if(h->position =='d'){
-                printf("Pace : ");
+                printf("[System] Pace : ");
                 scanf("%hu",&h->p1);
-                printf("Physical : ");
+                printf("[System] Physical : ");
                 scanf("%hu",&h->p2);
-                printf("Composure : ");
+                printf("[System] Composure : ");
                 scanf("%hu",&h->p3);
-                printf("Defence : ");
+                printf("[System] Defence : ");
                 scanf("%hu",&h->p4);
                 h->stats=((h->p1)+(h->p2)+(h->p3)+(h->p4))/4;
         }
 
         else if(h->position =='g'){
-                printf("Diving : ");
+                printf("[System] Diving : ");
                 scanf("%hu",&h->p1);
-                printf("Handling : ");
+                printf("[System] Handling : ");
                 scanf("%hu",&h->p2);
-                printf("Kick : ");
+                printf("[System] Kick : ");
                 scanf("%hu",&h->p3);
-                printf("Reaction : ");
+                printf("[System] Reaction : ");
                 scanf("%hu",&h->p4);
                 h->stats=((h->p1)+(h->p2)+(h->p3)+(h->p4))/4;
         }
@@ -117,52 +117,52 @@ void update_player(node *h){
  
         char name[20];
         node *cur;
-        printf("Wich player will you update? : ");
+        printf("[System] Wich player will you update? : ");
         scanf("%s",name);
  
 
         cur =find_name(h,name);
 
  
-        if(cur == h ) printf("The player doesn't exist. \n");
+        if(cur == h ) printf("[System] The player doesn't exist. \n");
         else {
           if(cur->position =='s'){
-                printf("Pace : ");
+                printf("[System] Pace : ");
                 scanf("%hu",&cur->p1);
-                printf("Shooting : ");
+                printf("[System] Shooting : ");
                 scanf("%hu",&cur->p2);
-                printf("Passing : ");
+                printf("[System] Passing : ");
                 scanf("%hu",&cur->p3);
-                printf("Dribbling : ");
+                printf("[System] Dribbling : ");
                 scanf("%hu",&cur->p4);
                 cur->stats = ((cur->p1)+(cur->p2)+(cur->p3)+(cur->p4))/4;
           }
 
           else if(cur->position =='d'){
-                printf("Pace : ");
+                printf("[System] Pace : ");
                 scanf("%hu",&cur->p1);
-                printf("Physical : ");
+                printf("[System] Physical : ");
                 scanf("%hu",&cur->p2);
-                printf("Composure : ");
+                printf("[System] Composure : ");
                 scanf("%hu",&cur->p3);
-                printf("Defence : ");
+                printf("[System] Defence : ");
                 scanf("%hu",&cur->p4);
                 cur->stats = ((cur->p1)+(cur->p2)+(cur->p3)+(cur->p4))/4;
           }
 
           else if(cur->position =='g'){
-                printf("Diving : ");
+                printf("[System] Diving : ");
                 scanf("%hu",&cur->p1);
-                printf("Handling : ");
+                printf("[System] Handling : ");
                 scanf("%hu",&cur->p2);
-                printf("Kick : ");
+                printf("[System] Kick : ");
                 scanf("%hu",&cur->p3);
-                printf("Reaction : ");
+                printf("[System] Reaction : ");
                 scanf("%hu",&cur->p4);
                 cur->stats = ((cur->p1)+(cur->p2)+(cur->p3)+(cur->p4))/4;
            }
 
-         printf("The update has been completed.\n");
+         printf("[System] The update has been completed.\n");
 
         }
 
