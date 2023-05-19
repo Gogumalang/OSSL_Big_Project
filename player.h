@@ -20,27 +20,33 @@ typedef struct node{
 
 int account_list[100];
 
+void reset_data(node *t,node *h); // 미완성 - 커밋 
+        void random_stat_allocation(int *s);
+        void open_demo_file(node *h);
 
-void set_data(node *h);
+
+//void set_data(node *h);
 node *init(); // 재활용 가능 
 node *find_name(node *h,char name[]); // 재활용 가능 
 //void add_player(node *h);
-void update_player(node *h);
-void delete_player(node *h);
+void update_player(node *h); // 업데이트
+void delete_player(node *h); // 업데이트 
 void open_file(node *h); // 업데이트 - 커밋 // 수정
 void server_filesave(node *h); // 업데이트 -커밋 // 수정
-//void data_player(node *t);
-void read_player(node *h); // 업데이트 // 완성
-void read_squad(node *h,int n); // 업데이트 // 완성
-void buy_player(node *h,int *account);
-void sell_player(node *h,int *account);
-void cmp_player(node *h);
-int server_login(); // 업데이트 // 완성
-int select_server(); // 재활용 가능 //완성
-int select_client(); // 재활용 가능 // 완성 
-void deallocation(node *h); // 재활용 가능 //완성
+void data_player(node *t); // 업데이트 
+void read_player(node *h); // 업데이트 // 완성 - 커밋
+void read_squad(node *h,int n); // 업데이트 // 완성 - 커밋
+void buy_player(node *h,int *account,int n); // 업데이트 //완성
+void sell_player(node *h,int *account,int n); //업데이트 // 완성 
+void cmp_player(node *h); // 업데이트 // 완성 
 
-void read_all_players(node *h); // 새로 구현함 // 완성 
+
+int server_login(); // 업데이트 // 완성 - 커밋 
+int select_server(); // 재활용 가능 //완성 - 커밋 
+int select_client(); // 재활용 가능 // 완성 - 커밋 
+void deallocation(node *h); // 재활용 가능 //완성 -커밋 
+
+void read_all_players(node *h); // 새로 구현함 // 완성 - 커밋 
 
 
 //커밋

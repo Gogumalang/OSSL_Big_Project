@@ -2,6 +2,7 @@
 
 int main(){
     node *h;
+    node *t;
     int log = server_login();
     int server_menu;
 
@@ -14,7 +15,13 @@ int main(){
     while(1){
                         server_menu = select_server();
 
-                        if(server_menu == 1) continue; //add_player(h);
+                        if(server_menu == 1) {
+                                t = init();
+                                reset_data(t,h);
+                                server_filesave(t);
+                                deallocation(t);
+                                return 0; 
+                        }
                         else if(server_menu == 2) update_player(h);
                         else if(server_menu == 3) delete_player(h);
                         else if(server_menu == 4) read_all_players(h);
@@ -24,10 +31,10 @@ int main(){
                                 break;
                         }
                         else {
-                                printf("[System] choose in 0 to 4\n");
+                                printf("choose in 0 to 4\n");
                         }
 
             }
-
+    deallocation(h);
     return 0;
 }
