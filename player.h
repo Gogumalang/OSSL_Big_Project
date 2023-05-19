@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "string.h"
+#include <time.h>
 
 typedef struct node{
         char name[30];

@@ -1,5 +1,5 @@
 Josko Gvardiol,Centre-Back,100,5,90,90,90,90
 Matthijs de Ligt,Centre-Back,100,0,90,90,90,90
-Rúben Dias,Centre-Back,100,0,90,90,90,90
+Rúben Dias,Centre-Back,100,1,90,90,90,90
 Ronald Araújo,Centre-Back,100,5,90,90,90,90
 Alphonso Davies,Left-Back,100,4,90,90,90,90

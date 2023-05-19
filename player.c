@@ -18,62 +18,6 @@ typedef struct node{
 }node;
 */
 
-void set_data(node *h){ // addPlayer를 실행할 때 값을 넣을 보조 함수
-
-        printf("[System] Player name : ");
-        scanf("%s",h->name);
-        getchar();
-        while(1){
-
-        printf("[System] Position(s/d/g) : ");
-        scanf("%c",&h->position);
-        if(h->position == 's' ||h->position == 'g' ||h->position == 'd' ) break;
-
-        }
-
-        printf("[System] Price : ");
-        scanf("%d",&h->price);
-
-        if(h->position =='s'){
-                printf("[System] Pace : ");
-                scanf("%hu",&h->p1);
-                printf("[System] Shooting : ");
-                scanf("%hu",&h->p2);
-                printf("[System] Passing : ");
-                scanf("%hu",&h->p3);
-                printf("[System] Dribbling : ");
-                scanf("%hu",&h->p4);
-                h->stats=((h->p1)+(h->p2)+(h->p3)+(h->p4))/4;
-        }
-	else if(h->position =='d'){
-                printf("[System] Pace : ");
-                scanf("%hu",&h->p1);
-                printf("[System] Physical : ");
-                scanf("%hu",&h->p2);
-                printf("[System] Composure : ");
-                scanf("%hu",&h->p3);
-                printf("[System] Defence : ");
-                scanf("%hu",&h->p4);
-                h->stats=((h->p1)+(h->p2)+(h->p3)+(h->p4))/4;
-        }
-
-        else if(h->position =='g'){
-                printf("[System] Diving : ");
-                scanf("%hu",&h->p1);
-                printf("[System] Handling : ");
-                scanf("%hu",&h->p2);
-                printf("[System] Kick : ");
-                scanf("%hu",&h->p3);
-                printf("[System] Reaction : ");
-                scanf("%hu",&h->p4);
-                h->stats=((h->p1)+(h->p2)+(h->p3)+(h->p4))/4;
-        }
-
-
-
-        h->sold = false;
-
-	}
 
 node *init(){
         node *head;
@@ -89,7 +33,7 @@ node *find_name(node *h,char name[]){
         node *cur;
         cur =h;
         while(cur != NULL){
-                if(strstr(cur->name,name)!=NULL){
+                if(strcasestr(cur->name,name)!=NULL){
                         return cur;
                 }
                 cur = cur->link;
@@ -100,16 +44,7 @@ node *find_name(node *h,char name[]){
 
  
 
-void add_player(node *h){// add to head
-        node *newnode;
-        newnode = (node *)malloc(sizeof(node));
-        set_data(newnode);
- 
 
-        newnode->link = h->link;
-        h->link = newnode;
-
-}
 
  
 void update_player(node *h){ 
