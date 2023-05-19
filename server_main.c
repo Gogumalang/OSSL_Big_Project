@@ -24,7 +24,7 @@ int main(){
                                 break;
                         }
                         else {
-                                printf("choose in 0 to 4\n");
+                                printf("[System] choose in 0 to 4\n");
                         }
 
             }
