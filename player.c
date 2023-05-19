@@ -313,10 +313,10 @@ void read_all_players(node *h){
         node *cur;
         cur = h->link;
         for (int i=0;i<3;i++){
-            if(i == 0)      printf("\n----------------------Striker---------------------\n");
-            else if(i == 1) printf("\n----------------------Defender--------------------\n");
+            if(i == 0)      printf("\n----------------------[ Striker ]---------------------\n");
+            else if(i == 1) printf("\n----------------------[ Defender ]--------------------\n");
 
-            else printf("\n---------------------Goalkeeper-------------------\n");
+            else printf("\n---------------------[ Goalkeeper ]-------------------\n");
        
             printf("Name                    Main position     Price    \n");
              while(cur != NULL){
@@ -343,10 +343,10 @@ void read_player(node *h){
         printf("[System] What position are you looking for? (0:st 1:df 2:gk) : ");
         scanf("%d",&position);
 
-        if(position == 0)      printf("\n----------------------Striker---------------------\n");
-        else if(position == 1) printf("\n----------------------Defender--------------------\n");
+        if(position == 0)      printf("\n----------------------[ Striker ]---------------------\n");
+        else if(position == 1) printf("\n----------------------[ Defender ]--------------------\n");
 
-        else if(position == 2) printf("\n---------------------Goalkeeper-------------------\n");
+        else if(position == 2) printf("\n---------------------[ Goalkeeper ]-------------------\n");
         else {
             printf("[System] Please Enter Proper Number \n");
             return;
@@ -372,10 +372,10 @@ void read_squad(node *h,int n){
         node *cur;
         cur = h;
         for (int i=0;i<3;i++){
-            if(i == 0)      printf("\n----------------------Striker---------------------\n");
-            else if(i == 1) printf("\n----------------------Defender--------------------\n");
+            if(i == 0)      printf("\n----------------------[ Striker ]---------------------\n");
+            else if(i == 1) printf("\n----------------------[ Defender ]--------------------\n");
 
-            else printf("\n---------------------Goalkeeper-------------------\n");
+            else printf("\n---------------------[ Goalkeeper ]-------------------\n");
        
             printf("Name                    Main position     Price    \n");
              while(cur != NULL){
