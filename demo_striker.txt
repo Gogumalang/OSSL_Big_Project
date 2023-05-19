@@ -36,7 +36,7 @@ Diogo Jota	Left Winger	55
 Serge Gnabry	Right Winger	55
 Julián Álvarez	Centre-Forward	50
 João Félix	Second Striker	50
-Raphinha	Right Winger	50./
+Raphinha	Right Winger	50
 Ivan Toney	Centre-Forward	50
 Tammy Abraham	Centre-Forward	45
 Sadio Mané	Left Winger	45

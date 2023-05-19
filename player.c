@@ -754,7 +754,7 @@ void open_demo_file(node *h){
                                 new->p4= stat + s[3];
                                 new->position =i;
                                 
-                               
+                               data_player(new);
                                 if(new->price ==0){ // feof가 제대로 실행되지 않는 것 같아서 조건 하나를 더 주었다.
                                         free(new);
                                 }
