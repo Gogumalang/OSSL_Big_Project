@@ -130,7 +130,7 @@ void update_player(node *h){
  
         if(cur == h ) printf("[System] The player doesn't exist. \n");
         else {
-           printf("[System] %s 선수를 업데이트 하고 싶습니까? (yes : 1) : ",cur->name);
+           printf("[System] %s : You want to update info of this player? (yes : 1) : ",cur->name);
            scanf("%d",&yes);
 
           if(yes!=1) return;
@@ -194,7 +194,7 @@ void delete_player(node *h){
 
         while(cur!=NULL){
                 if(strcasestr(cur->name,name)!=NULL){
-                        printf("[System] %s 선수를 지우고 싶습니까? (yes : 1) : ",cur->name);
+                        printf("[System] %s : You want to delete this player? (yes : 1) : ",cur->name);
                         scanf("%d",&yes);
                         if(yes ==1){
                                 subcur->link = cur->link;
@@ -222,7 +222,7 @@ void open_file(node *h){
         tail = NULL;
         char buffer[100];
         char *token;
-        printf("openfile\n");
+        printf("[System] openfile...\n");
         for(int i=0;i<3;i++){ // 총 3개의 파일을 열어서 읽는다. 
                 if(i==0) fp = fopen("striker.txt","r");
                 else if(i==1) fp = fopen("defender.txt","r");
@@ -418,8 +418,8 @@ void buy_player(node *h,int *account,int n){
         else {
                 if(*(account) <cur ->price) printf("[System] Your account is not enough\n");
                 else {  
-                        printf("%s\n",cur->name);
-                        printf("Buy ? (yes : 1 No : 0) : ");
+                        printf("[System] %s\n",cur->name);
+                        printf("[System] Buy ? (yes : 1 No : 0) : ");
                         scanf("%d",&buy);
                         if(buy ==1){
 
@@ -502,17 +502,17 @@ void cmp_player(node *h){
                         }
                    }
                if(cur -> position == 0){
-                        printf("\n----------------------Striker---------------------\n");
+                        printf("\n----------------------[ Striker ]---------------------\n");
                         printf("Name                    Main position     Price Stats Pace Shooting Passing Dribbling\n");
                         
 
                }
                 else if(cur -> position ==1){
-                        printf("\n----------------------Defender--------------------\n");
+                        printf("\n----------------------[ Defender ]--------------------\n");
                         printf("Name                    Main position     Price Stats Pace Physical Composure Defense\n");
                 }
                 else{
-                        printf("\n---------------------Goalkeeper-------------------\n");
+                        printf("\n---------------------[ Goalkeeper ]-------------------\n");
                         printf("Name                    Main position     Price Stats Diving Handling Kick Reaction\n");
                 }
                 
@@ -556,7 +556,7 @@ int select_server(){
         printf(" 4. Read Player info\n");
         printf(" 0. Exit \n");
         printf("-------------------------\n");
-        printf("Input Number : ");
+        printf("[System] Input Number : ");
         scanf("%d",&menu);
         return menu;
 }
@@ -585,7 +585,7 @@ int select_client(){
         printf(" 5. Compare players \n");
         printf(" 0. Exit \n");
         printf("-------------------------\n");
-        printf("Input Number : ");
+        printf("[System] Input Number : ");
         scanf("%d",&menu);
         return menu;
 }
@@ -708,7 +708,7 @@ int sign_up(){
             printf("[System] PW : ");
             scanf("%d",&PW);
             if(PW == pw) {
-                printf("[System] Login successfully!\n");
+                printf("[System] Logged in successfully!\n");
                 i=1;
             }
             else { 
@@ -718,7 +718,7 @@ int sign_up(){
                     printf("[System] PW : ");
                     scanf("%d",&PW);
                     if(PW == pw) {
-                        printf("[System] Login successfully!\n");
+                        printf("[System] Logged in successfully!\n");
                         i=1;
                         break;
                     }
