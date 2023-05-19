@@ -772,12 +772,19 @@ void open_demo_file(node *h){
         char *token;
         int stat; 
         int s[4];
-        printf("[System] open demo file...\n");
+        int pre_price=0;
+        int n[150];
+        int c=0;
+        srand(time(NULL));
+        for (int i =0;i<150;i++){
+                n[i]=rand();
+        }
+        printf("open demo file\n");
         for(int i=0;i<3;i++){ // 총 3개의 파일을 열어서 읽는다. 
                 if(i==0) fp = fopen("demo_striker.txt","r");
                 else if(i==1) fp = fopen("demo_defender.txt","r");
                 else fp = fopen("demo_goalkeeper.txt","r");
-                stat = 100;
+                stat = 102;
 
                 if(fp ==NULL) {
                         fclose(fp);
@@ -796,8 +803,13 @@ void open_demo_file(node *h){
                                 token = strtok(NULL,"\t");
                                 new->price = atoi(token);
                                 new->usernum= 0;
-                               
-                                random_stat_allocation(s);
+                                
+                                random_stat_allocation(s,n[c]);
+                                c++;
+                                if(pre_price != new->price) {
+                                        stat -=2;
+                                        pre_price = new->price;
+                                }
                                 new->p1= stat + s[0];
                                
                                 new->p2= stat + s[1];
@@ -806,8 +818,8 @@ void open_demo_file(node *h){
                                
                                 new->p4= stat + s[3];
                                 new->position =i;
-                                stat -= 2;
-                                data_player(new);
+                                
+                               
                                 if(new->price ==0){ // feof가 제대로 실행되지 않는 것 같아서 조건 하나를 더 주었다.
                                         free(new);
                                 }
@@ -824,7 +836,6 @@ void open_demo_file(node *h){
                                         }
                                         
                                         new->stats=((new->p1)+(new->p2)+(new->p3)+(new->p4))/4;
-                                        
 
                                 }
 
@@ -832,15 +843,18 @@ void open_demo_file(node *h){
                         fclose(fp);
                 }
         }
-        printf("[System] close demo file\n");
+        printf("close demo file\n");
 }
 
 
 
-void random_stat_allocation(int *s){ // 가격에 따른 총 스탯은 같지만 점수를 할당하는 방식은 다르게 하고 싶어서 고안했다. 
+void random_stat_allocation(int *s,int n){ // 가격에 따른 총 스탯은 같지만 점수를 할당하는 방식은 다르게 하고 싶어서 고안했다. 
+
+        srand((unsigned)n);
+        
         int form1,form2;
         int alloc_presedure[4]; // 스탯 4가지 중에 값을 랜덤하게 할당할 리스트 // 내용의 의미는 stat의 index 번호이다. 
-        srand((unsigned)time(NULL));
+        
         
         for(int i=0;i<4;i++){ // 중복없이 stat list에 값을 할당할 순서를 정했다. 
                 alloc_presedure[i] = rand()%4;

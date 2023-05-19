@@ -20,14 +20,15 @@ typedef struct node{
 
 int account_list[100];
 
-// 미완성 
-void reset_data(node *t,node *h); // 미완성 - 커밋 
-        void random_stat_allocation(int *s);
+// 완성 : 내용은 완성되었지만, 출력 부분의 수정이 필요한 함수들 입니다. 
+//      출력 완성을 했으면 각 함수에 '//' 옆에 '출력부분 수정' 이라고 표시해주시면 감사하겠습니다! 
+
+void reset_data(node *t,node *h);
+        void random_stat_allocation(int *s,int n);
         void open_demo_file(node *h);
 
 
-// 완성 : 내용은 완성되었지만, 출력 부분의 수정이 필요한 함수들 입니다. 
-//      출력 완성을 했으면 각 함수에 '//' 옆에 '출력부분 수정' 이라고 표시해주시면 감사하겠습니다! 
+
 node *init(); // 링크드 리스트 선언 함수 // 
 node *find_name(node *h,char name[]); // 이름을 찾아서 해당 노드를 리턴하는 함수 // 
 

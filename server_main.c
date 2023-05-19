@@ -16,11 +16,15 @@ int main(){
                         server_menu = select_server();
 
                         if(server_menu == 1) {
-                                t = init();
-                                reset_data(t,h);
-                                server_filesave(t);
-                                deallocation(t);
-                                return 0; 
+                                log = server_login();
+                                if(log == 1){
+                                        t = init();
+                                        reset_data(t,h);
+                                        server_filesave(t);
+                                        deallocation(t);
+                                        return 0; 
+                                }
+                                
                         }
                         else if(server_menu == 2) update_player(h);
                         else if(server_menu == 3) delete_player(h);
