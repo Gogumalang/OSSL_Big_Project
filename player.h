@@ -24,7 +24,7 @@ int account_list[100];
 // 완성 : 내용은 완성되었지만, 출력 부분의 수정이 필요한 함수들 입니다. 
 //      출력 완성을 했으면 각 함수에 '//' 옆에 '출력부분 수정' 이라고 표시해주시면 감사하겠습니다! 
 
-void reset_data(node *t,node *h);
+void reset_data(node *t,node *h); // demofile의 내용으로 업데이트 
         void random_stat_allocation(int *s,int n);
         void open_demo_file(node *h);
 

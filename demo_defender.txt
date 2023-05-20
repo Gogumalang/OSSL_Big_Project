@@ -44,7 +44,6 @@ Marc Guéhi	Centre-Back	35
 Diogo Dalot	Right-Back	35					
 Ibrahima Konaté	Centre-Back	35					
 Benjamin Pavard	Right-Back	35					
-Robin Le Normand	Centre-Back	35					
+Robin Le Normand	Centre-Back	35
 Ben Chilwell	Left-Back	35					
 Ferland Mendy	Left-Back	35					
-Presnel Kimpembe	Centre-Back	35

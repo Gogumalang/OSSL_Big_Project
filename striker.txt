@@ -1,5 +1,46 @@
-Kylian Mbappé,Centre-Forward,100,5,100,20,30,40
-Erling Haaland,Centre-Forward,100,7,90,90,90,90
-Vinicius Junior,Left Winger,100,0,90,90,90,90
-Bukayo Saka,Right Winger,100,1,90,90,90,90
-Phil Foden,Right Winger,100,0,90,90,90,90
+Kylian Mbappé,Centre-Forward,180,5,100,105,100,95
+Erling Haaland,Centre-Forward,170,7,98,103,98,93
+Vinicius Junior,Left Winger,120,0,101,96,96,91
+Bukayo Saka,Right Winger,110,1,99,94,94,89
+Phil Foden,Left Winger,110,0,94,94,99,89
+Victor Osimhen,Centre-Forward,100,10,97,92,92,87
+Harry Kane,Centre-Forward,90,0,95,93,87,85
+Khvicha Kvaratskhelia,Left Winger,85,0,93,91,85,83
+Rodrygo,Right Winger,80,10,91,89,83,81
+Lautaro Martínez,Centre-Forward,80,0,81,91,83,89
+Rafael Leão,Left Winger,80,0,89,81,83,91
+Christopher Nkunku,Second Striker,80,0,91,89,83,81
+Marcus Rashford,Left Winger,80,0,81,91,83,89
+Luis Díaz,Left Winger,75,0,88,80,81,87
+Gabriel Jesus,Centre-Forward,75,0,88,80,87,81
+Dusan Vlahovic,Centre-Forward,75,0,82,86,87,81
+Gabriel Martinelli,Left Winger,70,0,82,82,82,82
+Antony,Right Winger,70,0,82,82,82,82
+Darwin Núñez,Centre-Forward,70,0,82,82,82,82
+Jack Grealish,Left Winger,70,0,82,82,82,82
+Leroy Sané,Right Winger,70,0,82,82,82,82
+Mohamed Salah,Right Winger,70,0,82,82,82,82
+Neymar,Left Winger,70,0,82,82,82,82
+Randal Kolo Muani,Centre-Forward,65,0,80,80,80,80
+Kingsley Coman,Left Winger,65,0,85,75,75,85
+Mykhaylo Mudryk,Left Winger,60,0,83,73,73,83
+Jonathan David,Centre-Forward,60,0,73,73,83,83
+Cody Gakpo,Left Winger,60,0,73,73,83,83
+Ousmane Dembélé,Right Winger,60,0,83,73,83,73
+Raheem Sterling,Left Winger,60,0,83,73,83,73
+Heung-min Son,Left Winger,60,0,83,73,73,83
+Dejan Kulusevski,Right Winger,55,0,71,71,81,81
+Jadon Sancho,Left Winger,55,0,71,71,81,81
+Richarlison,Centre-Forward,55,0,77,73,75,79
+Diogo Jota,Left Winger,55,0,79,77,75,73
+Serge Gnabry,Right Winger,55,0,72,80,72,80
+Julián Álvarez,Centre-Forward,50,0,70,78,70,78
+João Félix,Second Striker,50,0,70,78,70,78
+Raphinha,Right Winger,50,0,70,70,78,78
+Ivan Toney,Centre-Forward,50,0,70,70,78,78
+Tammy Abraham,Centre-Forward,45,0,68,68,76,76
+Sadio Mané,Left Winger,45,0,68,68,76,76
+Lionel Messi,Right Winger,45,0,68,76,68,76
+Gonçalo Ramos,Centre-Forward,40,10,70,70,75,65
+Anthony Gordon,Left Winger,40,10,75,70,70,65
+Romelu Lukaku,Centre-Forward,40,0,70,70,75,65

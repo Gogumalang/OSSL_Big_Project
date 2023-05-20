@@ -1,22 +1,4 @@
 #include "player.h"
-// 이것은 플레이어 데이터를 담을 수 있는 코드 입니다! 
-
-/*
-typedef struct node{
-        char name[30];
-        char main_position[30];
-        unsigned short position; // 0 : striker , 1: defender, 2: goalkeeper
-        int price;
-        unsigned short usernum; // 0 : not sold, a : usernum
-        unsigned short p1;
-        unsigned short p2;
-        unsigned short p3;
-        unsigned short p4;
-        unsigned short stats;
-        struct node *link;
-
-}node;
-*/
 
 
 node *init(){
@@ -53,7 +35,7 @@ void update_player(node *h){
         char name[20];
         int yes;
         node *cur;
-        printf("[System] Wich player will you update? : ");
+        printf("[System] Player name : ");
         getchar();
         fgets(name,sizeof(name),stdin);
         name[strlen(name)-1]='\0';
@@ -65,7 +47,8 @@ void update_player(node *h){
  
         if(cur == h ) printf("[System] The player doesn't exist. \n");
         else {
-           printf("[System] %s : You want to update info of this player? (yes : 1) : ",cur->name);
+           printf("[System] Player name : %s\n",cur->name);
+           printf("[System] Update(1) Cancel(0) : ");
            scanf("%d",&yes);
 
           if(yes!=1) return;
@@ -122,14 +105,15 @@ void delete_player(node *h){
         node *cur, *subcur;
         cur = h->link;
         subcur=h;
-        printf("[System] Which player will you delete? : ");
+        printf("[System] Player name : ");
         getchar();
         fgets(name,sizeof(name),stdin);
         name[strlen(name)-1]='\0';
 
         while(cur!=NULL){
                 if(strcasestr(cur->name,name)!=NULL){
-                        printf("[System] %s : You want to delete this player? (yes : 1) : ",cur->name);
+                        printf("[System] Player name : %s \n",cur->name);
+                        printf("[System] Delete(1) Cancel(0) : ");
                         scanf("%d",&yes);
                         if(yes ==1){
                                 subcur->link = cur->link;
@@ -157,7 +141,7 @@ void open_file(node *h){
         tail = NULL;
         char buffer[100];
         char *token;
-        printf("[System] openfile...\n");
+        printf("[System] Load data...\n");
         for(int i=0;i<3;i++){ // 총 3개의 파일을 열어서 읽는다. 
                 if(i==0) fp = fopen("striker.txt","r");
                 else if(i==1) fp = fopen("defender.txt","r");
@@ -239,8 +223,9 @@ void server_filesave(node *h){
 }
  
 
-void data_player(node *t){ // 출력 화면을 다듬을 필요가 있음.
-        printf("%-23s %-17s $%dm %5hu %5hu %8hu %8hu %8hu\n",t->name, t->main_position, t->price,t->stats, t->p1, t->p2, t->p3, t->p4);
+void data_player(node *t){ 
+        printf("%-23s %-17s $%d.00m    %-6hu %-7hu %-7hu %-9hu %hu\n",t->name, t->main_position, t->price,t->stats, t->p1, t->p2, t->p3, t->p4);
+      
 }
 
 void read_all_players(node *h){
@@ -253,13 +238,13 @@ void read_all_players(node *h){
 
             else printf("\n---------------------[ Goalkeeper ]-------------------\n");
        
-            printf("Name                    Main position     Price    \n");
+            printf("Name                    Main position     Price    \n\n");
              while(cur != NULL){
  
 
                 if(cur->position == i ){
-                    printf("%-23s %-17s $%dm\n",cur->name, cur->main_position,cur->price);
-                        //      Khvicha Kvaratskhelia   Centre-Forward    $180.00m
+                    printf("%-23s %-17s $%d.00m\n",cur->name, cur->main_position,cur->price);
+
                 } 
 
     
@@ -275,7 +260,7 @@ void read_player(node *h){
         node *cur;
         cur = h->link;
         int position;
-        printf("[System] What position are you looking for? (0:st 1:df 2:gk) : ");
+        printf("[System] Position (st: 0 1:df 2:gk) : ");
         scanf("%d",&position);
 
         if(position == 0)      printf("\n----------------------[ Striker ]---------------------\n");
@@ -288,12 +273,12 @@ void read_player(node *h){
         }
             
 
-        printf("Name                    Main position     Price    \n");
+        printf("Name                    Main position     Price    \n\n");
         while(cur != NULL){
  
 
             if((cur->position == position) &&(cur->usernum == 0)){
-                printf("%-23s %-17s $%dm\n",cur->name, cur->main_position,cur->price);
+                printf("%-23s %-17s $%d.00m\n",cur->name, cur->main_position,cur->price);
                     //      Khvicha Kvaratskhelia   Centre-Forward    $180.00m
             } 
 
@@ -312,12 +297,12 @@ void read_squad(node *h,int n){
 
             else printf("\n---------------------[ Goalkeeper ]-------------------\n");
        
-            printf("Name                    Main position     Price    \n");
+            printf("Name                    Main position     Price    \n\n");
              while(cur != NULL){
  
 
                 if((cur->position == i) &&(cur->usernum == n)){
-                    printf("%-23s %-17s $%dm",cur->name, cur->main_position,cur->price);
+                    printf("%-23s %-17s $%d.00m\n",cur->name, cur->main_position,cur->price);
                 } 
 
     
@@ -339,7 +324,7 @@ void buy_player(node *h,int *account,int n){
         char name[20];
         node *cur;
         int buy;
-        printf("[System] Which player will you buy? : ");
+        printf("[System] Player name : ");
         getchar();
         fgets(name,sizeof(name),stdin);
         name[strlen(name)-1]='\0';
@@ -351,16 +336,16 @@ void buy_player(node *h,int *account,int n){
         if(cur == h ) printf("[System] The player doesn't exist. \n");
         else if(cur->usernum !=0) printf("[System] The player is sold. \n");
         else {
-                if(*(account) <cur ->price) printf("[System] Your account is not enough\n");
+                if(*(account) <cur ->price) printf("[System] You don't have enough balance\n");
                 else {  
-                        printf("[System] %s\n",cur->name);
-                        printf("[System] Buy ? (yes : 1 No : 0) : ");
+                        printf("[System] Player name : %s\n",cur->name);
+                        printf("[System] Perchase(1) Cancel(0) : ");
                         scanf("%d",&buy);
                         if(buy ==1){
 
                                 cur->usernum = n;
                                 *account -=cur->price;
-                                printf("[System] The perchase has been completed.!\n Account : %d \n",*account);
+                                printf("[System] The perchase has been completed\n User account : $%dm \n",*account);
                         }
                 }
         }
@@ -373,7 +358,7 @@ void sell_player(node *h,int *account,int n){
         char name[20];
         node *cur;
         int sell;
-        printf("[System] Wich player will you sell? : ");
+        printf("[System] Player name : ");
         getchar();
         fgets(name,sizeof(name),stdin);
         name[strlen(name)-1]='\0';
@@ -384,8 +369,8 @@ void sell_player(node *h,int *account,int n){
         if(cur == h ) printf("[System] The player doesn't exist. \n");
         else if(cur->usernum != n) printf("[System] The player isn't in your squad. \n");
         else {
-                printf("[System] %s\n",cur->name);
-                printf("[System] Sell ? (yes : 1 No : 0) : ");
+                printf("[System] Player name : %s\n",cur->name);
+                printf("[System] Sell(1) Cancel(0) : ");
                 scanf("%d",&sell);
                 if(sell == 1){
                         cur->usernum= 0;
@@ -404,7 +389,7 @@ void cmp_player(node *h){
         node *cur,*cur2;
         char name[2][30];
         int serch;
-        printf("[System] Enter the player you're looking for : ");
+        printf("[System] Player name : ");
         getchar();
         fgets(name[0],sizeof(name[0]),stdin);
         name[0][strlen(name[0])-1]='\0';
@@ -414,12 +399,12 @@ void cmp_player(node *h){
  
         if(cur == h ) printf("[System] The player doesn't exist. \n");
         else{   
-                printf("%s\n",cur->name);
-                printf("[System] Compare?(1) No (0) : ");
+                printf("[System] Player name : %s\n",cur->name);
+                printf("[System] Compare(1) or Detailed Information(0) : ");
                 scanf("%d",&serch);
                 if(serch ==1){
                         while(1){
-                        printf("[System] Which player you want to compare (quit: q) : ");
+                        printf("[System] Player name ( Cancel :q  ) : ");
                         getchar();
                         fgets(name[1],sizeof(name[1]),stdin);
                         name[1][strlen(name[1])-1]='\0';
@@ -438,17 +423,17 @@ void cmp_player(node *h){
                    }
                if(cur -> position == 0){
                         printf("\n----------------------[ Striker ]---------------------\n");
-                        printf("Name                    Main position     Price Stats Pace Shooting Passing Dribbling\n");
+                        printf("Name                    Main position     Price    Stats   Pace  Shooting Passing  Dribbling\n\n");
                         
 
                }
                 else if(cur -> position ==1){
                         printf("\n----------------------[ Defender ]--------------------\n");
-                        printf("Name                    Main position     Price Stats Pace Physical Composure Defense\n");
+                        printf("Name                    Main position     Price    Stats   Pace  Physical Composure Defense\n\n");
                 }
                 else{
                         printf("\n---------------------[ Goalkeeper ]-------------------\n");
-                        printf("Name                    Main position     Price Stats Diving Handling Kick Reaction\n");
+                        printf("Name                    Main position     Price    Stats  Diving Handling    Kick   Reaction\n\n");
                 }
                 
 
@@ -468,7 +453,7 @@ int server_login(){
         int s_pw=2023; // 서버 관리자로 접근 가능한 패스워드
        
         
-        printf("[System] Input password : ");
+        printf("[System] SERVER PW : ");
         scanf("%d",&s_log);
         if(s_log == s_pw) {
                 printf("[System] Access as server admin \n");
@@ -485,7 +470,7 @@ int server_login(){
 int select_server(){
         int menu;
         printf("\n\n\n---------[ Server menu ]-----------\n\n");
-        printf(" 1. Add player \n");
+        printf(" 1. Update New version \n");
         printf(" 2. Update player \n");
         printf(" 3. Delete Player \n");
         printf(" 4. Read Player info\n");
@@ -517,7 +502,7 @@ int select_client(){
         printf(" 2. Buy Player \n");
         printf(" 3. Sell Player \n");
         printf(" 4. Read Player info\n");
-        printf(" 5. Compare players \n");
+        printf(" 5. Compare players / Detailed info\n");
         printf(" 0. Exit \n");
         printf("-------------------------\n");
         printf("[System] Input Number : ");
@@ -565,7 +550,7 @@ void save_account(int u,int n){
 
 void sign_in(){
     FILE *p;
-    p= fopen("login_info.txt","r");
+
     char make_ID[20];
     char file_ID[20];
     int make_PW;
@@ -577,22 +562,23 @@ void sign_in(){
     while(1){ //아이디 정하기 
         printf("[Register] Enter your New ID : ");
         scanf("%s",make_ID);
+        p= fopen("login_info.txt","r");
         while(!feof(p)){
             fscanf(p,"%d %s %d",&last_user_num,file_ID,&pw);
             if(strcmp(make_ID,file_ID)==0) exist =1;
         }
         if(exist==0) break;
-        if(exist == 1) printf("[Register] Your ID exists already. \n");
+        if(exist == 1) printf("[Register] Your ID exists already \n");
         exist =0;
 
     }
     fclose(p);
 
     while(1){
-        printf("[Register] Enter your password.(ONLY Number): ");
+        printf("[Register] Enter your password (ONLY Number): ");
         scanf("%d",&make_PW);
 
-        printf("[Register] Enter your password again. : ");
+        printf("[Register] Enter your password again : ");
         scanf("%d",&verify_PW);
         if(make_PW==verify_PW) {
             printf("[Register] The Registration has been completed. Restart this program and login again please. \n");
@@ -602,7 +588,7 @@ void sign_in(){
 
     }
 
-    default_account = 100000;
+    default_account = 3000;
     p = fopen("login_info.txt","a"); // 회원 정보를 파일에 저장하기
 
     fprintf(p,"%d %s %d\n",last_user_num+1,make_ID,make_PW);
@@ -610,13 +596,13 @@ void sign_in(){
 
     p = fopen("account.txt","a");
 
-    fprintf(p,"%d\n",default_account); // 잔액 파일에 저장하기 
+    fprintf(p,"\n%d",default_account); // 잔액 파일에 저장하기 
     fclose(p);
 }
 
 int sign_in_or_up(){
     int sign;
-    printf("[System] Login(1) Registation(0) : ");
+    printf("[System] Log in(1) Sign up(0) : ");
     scanf("%d",&sign);
     return sign;
 }
@@ -649,7 +635,7 @@ int sign_up(){
             else { 
                 i=2;
                 while(count<=3){
-                    printf("[System] Invaild PW (%d/3)\n",count);
+                    printf("[System] Invalid PW (%d/3)\n",count);
                     printf("[System] PW : ");
                     scanf("%d",&PW);
                     if(PW == pw) {
@@ -666,11 +652,11 @@ int sign_up(){
     }
 
     if(i==0) {
-        printf("[System] Non-exist ID\n");
+        printf("[System] The ID doesn't exist. \n");
         user_num =0;
     }
     if(i==2) {
-        printf("[System] Failed login\n");
+        printf("[System] Failed log in\n");
         user_num =0;
     }
 
@@ -708,17 +694,18 @@ void open_demo_file(node *h){
         int stat; 
         int s[4];
         int pre_price=0;
-        int n[150];
+        int n[200];
         int c=0;
         srand(time(NULL));
-        for (int i =0;i<150;i++){
+        for (int i =0;i<200;i++){
                 n[i]=rand();
         }
-        printf("open demo file\n");
+
         for(int i=0;i<3;i++){ // 총 3개의 파일을 열어서 읽는다. 
                 if(i==0) fp = fopen("demo_striker.txt","r");
                 else if(i==1) fp = fopen("demo_defender.txt","r");
                 else fp = fopen("demo_goalkeeper.txt","r");
+                        
                 stat = 102;
 
                 if(fp ==NULL) {
@@ -729,9 +716,10 @@ void open_demo_file(node *h){
                         while(!feof(fp)){
                                 node *new;
                                 new= (node *)malloc(sizeof(node));
+                                
                                 fgets(buffer,sizeof(buffer),fp); // 파일에서 한줄을 받아온다.
-                        
-                                token = strtok(buffer,"\t"); // ','를 기준으로 단어를 나눈다. 
+                               
+                                token = strtok(buffer,"\t"); // '\t'를 기준으로 단어를 나눈다. 
                                 strcpy(new->name,token);
                                 token = strtok(NULL,"\t");
                                 strcpy(new->main_position,token);
@@ -741,6 +729,7 @@ void open_demo_file(node *h){
                                 
                                 random_stat_allocation(s,n[c]);
                                 c++;
+
                                 if(pre_price != new->price) {
                                         stat -=2;
                                         pre_price = new->price;
@@ -753,8 +742,7 @@ void open_demo_file(node *h){
                                
                                 new->p4= stat + s[3];
                                 new->position =i;
-                                
-                               data_player(new);
+
                                 if(new->price ==0){ // feof가 제대로 실행되지 않는 것 같아서 조건 하나를 더 주었다.
                                         free(new);
                                 }
@@ -778,7 +766,7 @@ void open_demo_file(node *h){
                         fclose(fp);
                 }
         }
-        printf("close demo file\n");
+        printf("[System] Update New version\n");
 }
 
 
@@ -788,7 +776,7 @@ void random_stat_allocation(int *s,int n){ // 가격에 따른 총 스탯은 같
         srand((unsigned)n);
         
         int form1,form2;
-        int alloc_presedure[4]; // 스탯 4가지 중에 값을 랜덤하게 할당할 리스트 // 내용의 의미는 stat의 index 번호이다. 
+        int alloc_presedure[4]; // 능력치 4가지 중에 값을 랜덤하게 할당할 리스트 // 내용의 의미는 stat의 index 번호이다. 
         
         
         for(int i=0;i<4;i++){ // 중복없이 stat list에 값을 할당할 순서를 정했다. 
