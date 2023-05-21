@@ -9,8 +9,7 @@
 
 ### 1. 사용 프로그램 ⚽
 - Communication : Kakaotalk
-- Woking : Github 
-- Crawling : Listly
+- Woking : Github , VS code
 
 ===========================
 
