@@ -1,6 +1,10 @@
 # OSSL_Big_Project
 
 
+![image](https://github.com/Gogumalang/OSSL_Big_Project/assets/74346735/a3c58891-56de-470f-9804-527977203d33)
+
+# 축구팀을 꾸리고 싶으신가요? 다 준비되어있습니다.
+
 ### 1. 사용 프로그램
 - Communication : Kakaotalk
 - Woking : Github 
