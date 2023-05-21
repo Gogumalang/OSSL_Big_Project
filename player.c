@@ -260,7 +260,7 @@ void read_player(node *h){
         node *cur;
         cur = h->link;
         int position;
-        printf("[System] Position (st: 0 1:df 2:gk) : ");
+        printf("[System] Position (ST: 0 / DF:1 / GK:2) : ");
         scanf("%d",&position);
 
         if(position == 0)      printf("\n----------------------[ Striker ]---------------------\n");
