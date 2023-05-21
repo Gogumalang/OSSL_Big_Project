@@ -9,13 +9,6 @@ Achraf Hakimi,Right-Back,70,0,101,95,93,103
 Marquinhos,Centre-Back,70,0,103,95,93,101
 Nuno Mendes,Left-Back,65,0,99,93,91,101
 Wesley Fofana,Centre-Back,65,10,101,93,91,99
-Trent Alexander-Arnold,Right-Back,65,0,101,100,91,92
-Jules Koundé,Centre-Back,60,0,94,95,94,93
-Cristian Romero,Centre-Back,60,0,94,95,94,93
-Dayot Upamecano,Centre-Back,60,0,94,95,94,93
-Theo Hernández,Left-Back,60,0,94,93,95,94
-Milan Skriniar,Centre-Back,60,0,94,93,94,95
-João Cancelo,Right-Back,60,0,94,93,94,95
 William Saliba,Centre-Back,55,0,92,93,92,91
 Alessandro Bastoni,Centre-Back,55,0,92,92,93,91
 Min-jae Kim,Centre-Back,50,0,92,88,93,87
@@ -24,26 +17,6 @@ Gabriel Magalhães,Centre-Back,50,0,92,88,88,92
 Ben White,Right-Back,50,0,92,88,88,92
 Lucas Hernández,Centre-Back,50,10,86,94,90,90
 David Alaba,Centre-Back,50,10,86,94,90,90
-Andrew Robertson,Left-Back,48,0,87,89,92,84
-Pau Torres,Centre-Back,45,0,85,87,90,82
-Sven Botman,Centre-Back,45,0,91,81,86,86
 Fikayo Tomori,Centre-Back,45,0,91,81,86,86
-Virgil van Dijk,Centre-Back,45,0,86,81,91,86
-Jurrien Timber,Centre-Back,42,0,89,79,84,84
-Bremer,Centre-Back,40,0,86,78,78,86
-Benoît Badiashile,Centre-Back,40,0,86,78,78,86
-Nico Schlotterbeck,Centre-Back,40,0,86,78,78,86
-Marc Cucurella,Left-Back,40,0,86,78,78,86
-Oleksandr Zinchenko,Left-Back,40,0,86,78,78,86
-Raphaël Varane,Centre-Back,40,0,78,86,78,86
-Antonio Rüdiger,Centre-Back,40,0,86,86,78,78
-Pierre Kalulu,Centre-Back,35,0,84,84,76,76
-Pedro Porro,Right-Back,35,0,76,84,76,84
-Jeremie Frimpong,Right-Back,35,0,76,84,76,84
-Marc Guéhi,Centre-Back,35,0,76,84,76,84
-Diogo Dalot,Right-Back,35,0,76,84,76,84
-Ibrahima Konaté,Centre-Back,35,0,76,84,76,84
-Benjamin Pavard,Right-Back,35,0,76,84,76,84
-Robin Le Normand,Centre-Back,35,0,76,84,76,84
 Ben Chilwell,Left-Back,35,12,76,84,76,84
 Ferland Mendy,Left-Back,35,0,76,84,76,84
